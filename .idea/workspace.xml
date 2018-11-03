@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a56b2d4f-b5d1-4c33-8612-7269067830db" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/routes/expenditure-test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/routes/expenditure-test.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -40,7 +39,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="1076" />
+          <entry key="js" value="1103" />
           <entry key="json" value="24" />
           <entry key="txt" value="7" />
           <entry key="www" value="3" />
@@ -49,7 +48,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="24" />
-          <entry key="JavaScript" value="1079" />
+          <entry key="JavaScript" value="1106" />
           <entry key="PLAIN_TEXT" value="7" />
         </counts>
       </usages-collector>
@@ -88,7 +87,7 @@
         <entry file="file://$PROJECT_DIR$/test/routes/expenditure-test.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="128">
-              <caret line="432" column="12" selection-start-line="432" selection-start-column="12" selection-end-line="432" selection-end-column="12" />
+              <caret line="467" column="12" lean-forward="true" selection-start-line="467" selection-start-column="12" selection-end-line="467" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -167,7 +166,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="-10" />
     <option name="y" value="15" />
     <option name="width" value="1346" />
@@ -617,12 +616,12 @@
       <option name="presentableId" value="Default" />
       <updated>1541193260936</updated>
       <workItem from="1541193273597" duration="4676000" />
-      <workItem from="1541241709460" duration="11783000" />
+      <workItem from="1541241709460" duration="12266000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16459000" />
+    <option name="totallyTimeSpent" value="16942000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-10" y="15" width="1346" height="714" extended-state="0" />
@@ -722,7 +721,7 @@
     <entry file="file://$PROJECT_DIR$/test/routes/expenditure-test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
-          <caret line="432" column="12" selection-start-line="432" selection-start-column="12" selection-end-line="432" selection-end-column="12" />
+          <caret line="467" column="12" lean-forward="true" selection-start-line="467" selection-start-column="12" selection-end-line="467" selection-end-column="12" />
         </state>
       </provider>
     </entry>

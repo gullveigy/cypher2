@@ -465,6 +465,45 @@ describe('Expenditures', function (){
 
 
 
+    describe('GET /expenditures/gettotal/:date',  () => {
+        it('should return total amounts of expenditure of one month in an array', function(done) {
+            chai.request(server)
+                .get('/expenditures/gettotal/2018-10')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(1);
+                    //let result = _.map(res.body, (expenditure) => {
+                    //return { description: expenditure.description,
+                    //amount: expenditure.amount }
+                    //});
+                    expect(res.body).to.include({ monthlyamounts: 37.59 } );
+                    //{ description: 'books', amount: 15 }
+                    //);
+                    //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
+                    //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
+                    //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
+                    done();
+                });
+
+        });
+        it('should return a message for no relevant expenditure records', function(done) {
+            chai.request(server)
+                .get('/expenditures/gettotal/2018-12')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    //expect(res.body.length).to.equal(0);
+                    expect(res.body).to.have.property('Message','Sorry! Cannot find the expenditures of this month!' ) ;
+                    done();
+                });
+        });
+
+    });
+
+
+
+
+
 
 
 
