@@ -34,7 +34,7 @@ describe('Expenditures', function (){
                 .end(function(err, res) {
                     let result = _.map(res.body, (expenditure) => {
                         return { payment: expenditure.payment,
-                            amount: expenditure.amount };
+                                  amount: expenditure.amount };
                     }  );
                     expect(result).to.include( { payment: 'Visa card', amount: 10  } );
                     done();
@@ -71,7 +71,7 @@ describe('Expenditures', function (){
                     .end(function(err, res) {
                         let result = _.map(res.body, (expenditure) => {
                             return { description: expenditure.description,
-                                amount: expenditure.amount };
+                                      amount: expenditure.amount };
                         }  );
                         expect(result).to.include( { description: 'glasses and snack', amount: 15  } );
                         done();
@@ -182,7 +182,7 @@ describe('Expenditures', function (){
                     expect(res.body.length).to.equal(12);
                     let result = _.map(res.body, (expenditure) => {
                         return { description: expenditure.description,
-                            amount: expenditure.amount }
+                                  amount: expenditure.amount }
                     });
                     expect(result).to.include( { description: 'Latte', amount: 4  });
                     expect(result).to.include( { description: 'cheese', amount: 3  } );
@@ -215,7 +215,7 @@ describe('Expenditures', function (){
                     expect(res.body.length).to.equal(1);
                     let result = _.map(res.body, (expenditure) => {
                         return { description: expenditure.description,
-                            amount: expenditure.amount }
+                                  amount: expenditure.amount }
                     });
                     expect(result).to.include( { description: "pork", amount: 4  } );
                     //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
@@ -250,10 +250,10 @@ describe('Expenditures', function (){
                     expect(res.body.length).to.equal(1);
                     let result = _.map(res.body, (expenditure) => {
                         return { description: expenditure.description,
-                            amount: expenditure.amount }
+                                  amount: expenditure.amount }
                     });
                     expect(result).to.include( //{ description: 'RIP card', amount: 300  },
-                        { description: 'haribo', amount: 6 }
+                         { description: 'haribo', amount: 6 }
                     );
                     //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
                     //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
@@ -286,20 +286,20 @@ describe('Expenditures', function (){
                     expect(res.body.length).to.equal(12);
                     let result = _.map(res.body, (expenditure) => {
                         return { description: expenditure.description,
-                            amount: expenditure.amount }
+                                  amount: expenditure.amount }
                     });
                     expect(result).to.include( { description: 'cola', amount: 2.1  },
-                        { description: 'chips', amount: 2.5 },
-                        { description: 'cheese', amount: 3 },
-                        { description: 'Latte', amount: 4 },
-                        { description: 'pork', amount: 4 },
-                        { description: 'the ordinary', amount: 5.95 },
-                        { description: 'haribo', amount: 6 },
-                        { description: 'nyx pencil', amount: 9.99 },
-                        { description: 'sunscreen cream', amount: 13 },
-                        { description: 'eye shadow', amount: 16 },
-                        { description: 'premier', amount: 34 },
-                        { description: 'foundation', amount: 36 });
+                                               { description: 'chips', amount: 2.5 },
+                                               { description: 'cheese', amount: 3 },
+                                               { description: 'Latte', amount: 4 },
+                                               { description: 'pork', amount: 4 },
+                                               { description: 'the ordinary', amount: 5.95 },
+                                               { description: 'haribo', amount: 6 },
+                                               { description: 'nyx pencil', amount: 9.99 },
+                                               { description: 'sunscreen cream', amount: 13 },
+                                               { description: 'eye shadow', amount: 16 },
+                                               { description: 'premier', amount: 34 },
+                                               { description: 'foundation', amount: 36 });
                     //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
                     //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
                     //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
@@ -325,17 +325,17 @@ describe('Expenditures', function (){
                                   date: expenditure.date }
                     });
                     expect(result).to.include( { description: 'Latte', date: '2018-10-15'  },
-                        { description: 'cheese', date: '2018-10-15' },
-                        { description: 'chips', date: '2018-10-16' },
-                        { description: 'cola', date: '2018-10-19' },
-                        { description: 'eye shadow', date: '2018-10-28' },
-                        { description: 'nyx pencil', date: '2018-10-29' },
-                        { description: 'haribo', date: '2018-11-01' },
-                        { description: 'sunscreen cream', date: '2018-11-03' },
-                        { description: 'foundation', date: '2018-11-05' },
-                        { description: 'premier', date: '2018-11-15' },
-                        { description: 'the ordinary', date: '2018-11-26'},
-                        { description: 'pork', date: '2018-11-27'} );
+                                               { description: 'cheese', date: '2018-10-15' },
+                                               { description: 'chips', date: '2018-10-16' },
+                                               { description: 'cola', date: '2018-10-19' },
+                                               { description: 'eye shadow', date: '2018-10-28' },
+                                               { description: 'nyx pencil', date: '2018-10-29' },
+                                               { description: 'haribo', date: '2018-11-01' },
+                                               { description: 'sunscreen cream', date: '2018-11-03' },
+                                               { description: 'foundation', date: '2018-11-05' },
+                                               { description: 'premier', date: '2018-11-15' },
+                                               { description: 'the ordinary', date: '2018-11-26'},
+                                               { description: 'pork', date: '2018-11-27'} );
                     //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
                     //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
                     //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
@@ -359,14 +359,14 @@ describe('Expenditures', function (){
                     expect(res.body.length).to.equal(6);
                     let result = _.map(res.body, (expenditure) => {
                         return { description: expenditure.description,
-                            date: expenditure.date }
+                                  date: expenditure.date }
                     });
                     expect(result).to.include( { description: 'Latte', date: '2018-10-15'  },
-                        { description: 'cheese', date: '2018-10-15' },
-                        { description: 'chips', date: '2018-10-16' },
-                        { description: 'cola', date: '2018-10-19' },
-                        { description: 'eye shadow', date: '2018-10-28' },
-                        { description: 'nyx pencil', date: '2018-10-29' }
+                                               { description: 'cheese', date: '2018-10-15' },
+                                               { description: 'chips', date: '2018-10-16' },
+                                               { description: 'cola', date: '2018-10-19' },
+                                               { description: 'eye shadow', date: '2018-10-28' },
+                                               { description: 'nyx pencil', date: '2018-10-29' }
                     );
                     //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
                     //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
@@ -402,10 +402,10 @@ describe('Expenditures', function (){
                     expect(res.body.length).to.equal(2);
                     let result = _.map(res.body, (expenditure) => {
                         return { description: expenditure.description,
-                            amount: expenditure.amount }
+                                  amount: expenditure.amount }
                     });
                     expect(result).to.include( { description: 'cheese', amount: 3  },
-                        { description: 'chips', amount: 2.5 }
+                                               { description: 'chips', amount: 2.5 }
                     );
                     //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
                     //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
@@ -437,7 +437,7 @@ describe('Expenditures', function (){
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.be.a('array');
-                    //expect(res.body.length).to.equal(1);
+                    expect(res.body.length).to.equal(1);
                     //let result = _.map(res.body, (expenditure) => {
                     //return { description: expenditure.description,
                     //amount: expenditure.amount }
@@ -450,15 +450,7 @@ describe('Expenditures', function (){
                 });
 
         });
-        //it('should return a 404 and a message for invalid expenditure id', function(done) {
-        //chai.request(server)
-        //.get('/expenditures/1100001')
-        //.end(function(err, res) {
-        //expect(res).to.have.status(404);
-        //expect(res.body).to.have.property('Message','Sorry! Cannot find the expenditure of this id!' ) ;
-        //done();
-        //});
-        //});
+
 
     });
 
