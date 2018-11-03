@@ -90,4 +90,51 @@ describe('Expenditures', function (){
             });
         });
     });
+
+
+
+    describe('DELETE /expenditures/:id', () => {
+        describe ('when id is valid',function(){
+            it('should return a confirmation message and update database ', function(done) {
+                chai.request(server)
+                    .delete('/expenditures/5bdd88469dd67b3a4c06e09b')
+                    .end(function(err, res) {
+                        expect(res).to.have.status(200);
+                        expect(res.body).to.have.property('message','Expenditure Successfully Deleted!' ) ;
+                        done();
+                    });
+
+            });
+            after(function  (done) {
+                chai.request(server)
+                    .get('/expenditures')
+                    .end(function(err, res) {
+                        expect(res).to.have.status(200);
+                        expect(res.body).to.be.a('array');
+                        let result = _.map(res.body, function(expenditure) {
+                            return { payment: expenditure.payment,
+                                      amount: expenditure.amount };
+                        }  );
+                        //expect(result).to.have.lengthOf(1) ;
+                        //expect(result).to.not.include( { paymenttype: 'Paypal', amount: 1600  } );
+                        expect(result).to.not.include( { payment: 'Visa card', amount: 15  } );
+                        done();
+                    });
+            });  // end after
+        });
+        describe('when id is invalid',function(){
+            it('should return a 404 and a message for invalid expenditure id', function(done) {
+                chai.request(server)
+                    .delete('/expenditures/1100001')
+                    .end(function(err, res) {
+                        expect(res).to.have.status(404);
+                        expect(res.body).to.have.property('message','Expenditure NOT DELETED!' ) ;
+                        done();
+                    });
+            });
+
+        });
+
+    });
+
 });
