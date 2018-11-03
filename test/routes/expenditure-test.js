@@ -430,6 +430,42 @@ describe('Expenditures', function (){
 
 
 
+    describe('GET /expenditures/tamounts',  () => {
+        it('should return the total amounts of expenditures in an array', function(done) {
+            chai.request(server)
+                .get('/expenditures/tamounts')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    //expect(res.body.length).to.equal(1);
+                    //let result = _.map(res.body, (expenditure) => {
+                    //return { description: expenditure.description,
+                    //amount: expenditure.amount }
+                    //});
+                    expect(res.body).to.include({ totalamounts: 136.54 } );
+                    //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
+                    //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
+                    //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
+                    done();
+                });
+
+        });
+        //it('should return a 404 and a message for invalid expenditure id', function(done) {
+        //chai.request(server)
+        //.get('/expenditures/1100001')
+        //.end(function(err, res) {
+        //expect(res).to.have.status(404);
+        //expect(res.body).to.have.property('Message','Sorry! Cannot find the expenditure of this id!' ) ;
+        //done();
+        //});
+        //});
+
+    });
+
+
+
+
+
 
 
 
