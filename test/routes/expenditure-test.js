@@ -312,5 +312,41 @@ describe('Expenditures', function (){
 
 
 
+    describe('GET /expenditures/indateorder',  () => {
+        it('should return all the expenditures in ascending order of date in an array', function(done) {
+            chai.request(server)
+                .get('/expenditures/indateorder')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(12);
+                    let result = _.map(res.body, (expenditure) => {
+                        return { description: expenditure.description,
+                                  date: expenditure.date }
+                    });
+                    expect(result).to.include( { description: 'Latte', date: '2018-10-15'  },
+                        { description: 'cheese', date: '2018-10-15' },
+                        { description: 'chips', date: '2018-10-16' },
+                        { description: 'cola', date: '2018-10-19' },
+                        { description: 'eye shadow', date: '2018-10-28' },
+                        { description: 'nyx pencil', date: '2018-10-29' },
+                        { description: 'haribo', date: '2018-11-01' },
+                        { description: 'sunscreen cream', date: '2018-11-03' },
+                        { description: 'foundation', date: '2018-11-05' },
+                        { description: 'premier', date: '2018-11-15' },
+                        { description: 'the ordinary', date: '2018-11-26'},
+                        { description: 'pork', date: '2018-11-27'} );
+                    //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
+                    //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
+                    //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
+                    done();
+                });
+
+        });
+    });
+
+
+
+
 
 });
