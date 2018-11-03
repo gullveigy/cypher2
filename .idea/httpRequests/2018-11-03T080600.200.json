@@ -1,0 +1,12 @@
+{
+  "message": "Expenditure Successfully Added!",
+  "data": {
+    "description": "mirror",
+    "_id": "5bdd8f28c0750a1de48dbaa9",
+    "username": "April",
+    "date": "2018-12-10",
+    "payment": "cash",
+    "amount": 5.2,
+    "__v": 0
+  }
+}

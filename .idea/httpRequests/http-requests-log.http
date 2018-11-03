@@ -3,6 +3,28 @@ Accept: */*
 Cache-Control: no-cache
 Content-Type: application/json
 
+   {"username":"diana","date":"2018-12-21","payment":"we chat","amount":2.95,"description":"cup"}
+
+<> 2018-11-03T080707.200.json
+
+###
+
+POST http://localhost:3000/expenditures
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"username":"April","date":"2018-12-10","payment":"cash","amount":5.2,"description":"mirror"}
+
+<> 2018-11-03T080600.200.json
+
+###
+
+POST http://localhost:3000/expenditures
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
  {"username":"diana","date":"2018-11-27","payment":"cash","amount":4,"description":"pork"}
 
 <> 2018-11-03T070622.200.json

@@ -137,4 +137,38 @@ describe('Expenditures', function (){
 
     });
 
+
+
+
+
+    describe('DELETE /expenditures/fuzzydelete/:date',  () => {
+        it('should return a confirmation message and update database ', function(done) {
+            chai.request(server)
+                .delete('/expenditures/fuzzydelete/2018-12')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.have.property('Message','Expenditure Deleted Successfully!' ) ;
+                    done();
+                });
+        });
+        after(function  (done) {
+            chai.request(server)
+                .get('/expenditures')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    let result = _.map(res.body, function(expenditure) {
+                        return { payment: expenditure.payment,
+                                  amount: expenditure.amount };
+                    }  );
+                    //expect(result).to.have.lengthOf(1) ;
+                    //expect(result).to.not.include( { paymenttype: 'Paypal', amount: 1600  } );
+                    expect(result).to.not.include( { payment: 'cash', amount: 5.2  },
+                                                    { payment: 'we chat', amount: 2.95  });
+                    done();
+                });
+        });  // end after
+    });
+
+
 });
