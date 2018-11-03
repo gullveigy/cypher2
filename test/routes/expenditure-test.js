@@ -276,6 +276,41 @@ describe('Expenditures', function (){
 
 
 
+    describe('GET /expenditures/inamountorder',  () => {
+        it('should return all the expenditures in ascending order of amount in an array', function(done) {
+            chai.request(server)
+                .get('/expenditures/inamountorder')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(12);
+                    let result = _.map(res.body, (expenditure) => {
+                        return { description: expenditure.description,
+                            amount: expenditure.amount }
+                    });
+                    expect(result).to.include( { description: 'cola', amount: 2.1  },
+                        { description: 'chips', amount: 2.5 },
+                        { description: 'cheese', amount: 3 },
+                        { description: 'Latte', amount: 4 },
+                        { description: 'pork', amount: 4 },
+                        { description: 'the ordinary', amount: 5.95 },
+                        { description: 'haribo', amount: 6 },
+                        { description: 'nyx pencil', amount: 9.99 },
+                        { description: 'sunscreen cream', amount: 13 },
+                        { description: 'eye shadow', amount: 16 },
+                        { description: 'premier', amount: 34 },
+                        { description: 'foundation', amount: 36 });
+                    //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
+                    //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
+                    //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
+                    done();
+                });
+
+        });
+    });
+
+
+
 
 
 });
