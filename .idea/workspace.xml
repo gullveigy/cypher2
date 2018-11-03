@@ -39,7 +39,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="206" />
+          <entry key="js" value="306" />
           <entry key="json" value="24" />
           <entry key="txt" value="7" />
           <entry key="www" value="3" />
@@ -48,7 +48,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="24" />
-          <entry key="JavaScript" value="209" />
+          <entry key="JavaScript" value="309" />
           <entry key="PLAIN_TEXT" value="7" />
         </counts>
       </usages-collector>
@@ -86,8 +86,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/routes/expenditure-test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="143" column="12" lean-forward="true" selection-start-line="143" selection-start-column="12" selection-end-line="143" selection-end-column="12" />
+            <state relative-caret-position="261">
+              <caret line="181" column="50" lean-forward="true" selection-start-line="181" selection-start-column="50" selection-end-line="181" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -616,12 +616,12 @@
       <option name="presentableId" value="Default" />
       <updated>1541193260936</updated>
       <workItem from="1541193273597" duration="4676000" />
-      <workItem from="1541241709460" duration="5130000" />
+      <workItem from="1541241709460" duration="6116000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9806000" />
+    <option name="totallyTimeSpent" value="10792000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-10" y="15" width="1346" height="714" extended-state="0" />
@@ -720,8 +720,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/routes/expenditure-test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="143" column="12" lean-forward="true" selection-start-line="143" selection-start-column="12" selection-end-line="143" selection-end-column="12" />
+        <state relative-caret-position="261">
+          <caret line="181" column="50" lean-forward="true" selection-start-line="181" selection-start-column="50" selection-end-line="181" selection-end-column="50" />
         </state>
       </provider>
     </entry>

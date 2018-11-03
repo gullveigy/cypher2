@@ -171,4 +171,37 @@ describe('Expenditures', function (){
     });
 
 
+
+    describe('GET /expenditures',  () => {
+        it('should return all the expenditures in an array', function(done) {
+            chai.request(server)
+                .get('/expenditures')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(12);
+                    let result = _.map(res.body, (expenditure) => {
+                        return { description: expenditure.description,
+                            amount: expenditure.amount }
+                    });
+                    expect(result).to.include( { description: 'Latte', amount: 4  });
+                    expect(result).to.include( { description: 'cheese', amount: 3  } );
+                    expect(result).to.include( { description: 'chips', amount: 2.5  } );
+                    expect(result).to.include( { description: 'cola', amount: 2.1  } );
+                    expect(result).to.include( { description: 'eye shadow', amount: 16  } );
+                    expect(result).to.include( { description: 'nyx pencil', amount: 9.99  } );
+                    expect(result).to.include( { description: 'haribo', amount: 6  } );
+                    expect(result).to.include( { description: 'sunscreen cream', amount: 13  } );
+                    expect(result).to.include( { description: 'foundation', amount: 36  } );
+                    expect(result).to.include( { description: 'premier', amount: 34  } );
+                    expect(result).to.include( { description: 'the ordinary', amount: 5.95  } );
+                    expect(result).to.include( { description: 'pork', amount: 4  } );
+                    done();
+                });
+
+        });
+    });
+
+
+
 });
