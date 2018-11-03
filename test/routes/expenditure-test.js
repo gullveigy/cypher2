@@ -392,4 +392,45 @@ describe('Expenditures', function (){
 
 
 
+    describe('GET /expenditures/fuzzy/:description',  () => {
+        it('should return relevant expenditure records matching the fuzzy description in an array', function(done) {
+            chai.request(server)
+                .get('/expenditures/fuzzy/ch')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(2);
+                    let result = _.map(res.body, (expenditure) => {
+                        return { description: expenditure.description,
+                            amount: expenditure.amount }
+                    });
+                    expect(result).to.include( { description: 'cheese', amount: 3  },
+                        { description: 'chips', amount: 2.5 }
+                    );
+                    //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
+                    //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
+                    //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
+                    done();
+                });
+
+        });
+        it('should return a message for no relevant records', function(done) {
+            chai.request(server)
+                .get('/expenditures/fuzzy/123')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    //expect(res.body.length).to.equal(0);
+                    expect(res.body).to.have.property('Message','Sorry! Cannot find this expenditure by description!' ) ;
+                    done();
+                });
+        });
+
+    });
+
+
+
+
+
+
+
 });
