@@ -240,4 +240,42 @@ describe('Expenditures', function (){
 
 
 
+    describe('GET /expenditures/daterecord/:date',  () => {
+        it('should return a specific expenditure of one date in an array', function(done) {
+            chai.request(server)
+                .get('/expenditures/daterecord/2018-11-01')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(1);
+                    let result = _.map(res.body, (expenditure) => {
+                        return { description: expenditure.description,
+                            amount: expenditure.amount }
+                    });
+                    expect(result).to.include( //{ description: 'RIP card', amount: 300  },
+                        { description: 'haribo', amount: 6 }
+                    );
+                    //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
+                    //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
+                    //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
+                    done();
+                });
+        });
+        it('should return a message for daterecord which do not exist', function(done) {
+            chai.request(server)
+                .get('/expenditures/daterecord/2019-10-18')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    //expect(res.body.length).to.equal(0);
+                    expect(res.body).to.have.property('Message','Sorry! Cannot find the expenditure of this date!' ) ;
+                    done();
+                });
+        });
+
+    });
+
+
+
+
+
 });
