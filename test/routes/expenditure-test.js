@@ -349,4 +349,47 @@ describe('Expenditures', function (){
 
 
 
+    describe('GET /expenditures/monthrecord/:date',  () => {
+        it('should return expenditure records of one month in ascending order of date in an array', function(done) {
+            chai.request(server)
+                .get('/expenditures/monthrecord/2018-10')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(6);
+                    let result = _.map(res.body, (expenditure) => {
+                        return { description: expenditure.description,
+                            date: expenditure.date }
+                    });
+                    expect(result).to.include( { description: 'Latte', date: '2018-10-15'  },
+                        { description: 'cheese', date: '2018-10-15' },
+                        { description: 'chips', date: '2018-10-16' },
+                        { description: 'cola', date: '2018-10-19' },
+                        { description: 'eye shadow', date: '2018-10-28' },
+                        { description: 'nyx pencil', date: '2018-10-29' }
+                    );
+                    //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
+                    //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
+                    //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
+                    done();
+                });
+
+        });
+        it('should return a message for monthlyrecord cannot found', function(done) {
+            chai.request(server)
+                .get('/expenditures/monthrecord/2018-12')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    //expect(res.body.length).to.equal(0);
+                    expect(res.body).to.have.property('Message','Sorry! Cannot find the expenditures of this month!' ) ;
+                    done();
+                });
+        });
+
+    });
+
+
+
+
+
 });
