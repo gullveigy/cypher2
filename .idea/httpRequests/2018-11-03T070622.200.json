@@ -1,0 +1,12 @@
+{
+  "message": "Expenditure Successfully Added!",
+  "data": {
+    "description": "pork",
+    "_id": "5bdd812eef72153750b2df7d",
+    "username": "diana",
+    "date": "2018-11-27",
+    "payment": "cash",
+    "amount": 4,
+    "__v": 0
+  }
+}

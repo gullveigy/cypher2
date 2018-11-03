@@ -1,0 +1,12 @@
+{
+  "message": "Expenditure Successfully Added!",
+  "data": {
+    "description": "cheese",
+    "_id": "5bdd7f01ef72153750b2df73",
+    "username": "gullveig",
+    "date": "2018-10-15",
+    "payment": "we chat",
+    "amount": 3,
+    "__v": 0
+  }
+}

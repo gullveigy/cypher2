@@ -1,0 +1,12 @@
+{
+  "message": "Expenditure Successfully Added!",
+  "data": {
+    "description": "haribo",
+    "_id": "5bdd802eef72153750b2df78",
+    "username": "charlotte",
+    "date": "2018-11-01",
+    "payment": "Alipay",
+    "amount": 6,
+    "__v": 0
+  }
+}

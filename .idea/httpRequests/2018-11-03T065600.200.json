@@ -1,0 +1,12 @@
+{
+  "message": "Expenditure Successfully Added!",
+  "data": {
+    "description": "Latte",
+    "_id": "5bdd7ec0ef72153750b2df72",
+    "username": "gullveig",
+    "date": "2018-10-15",
+    "payment": "Alipay",
+    "amount": 4,
+    "__v": 0
+  }
+}

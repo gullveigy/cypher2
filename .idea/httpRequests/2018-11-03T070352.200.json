@@ -1,0 +1,12 @@
+{
+  "message": "Expenditure Successfully Added!",
+  "data": {
+    "description": "foundation",
+    "_id": "5bdd8098ef72153750b2df7a",
+    "username": "April",
+    "date": "2018-11-05",
+    "payment": "we chat",
+    "amount": 36,
+    "__v": 0
+  }
+}

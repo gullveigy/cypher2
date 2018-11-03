@@ -1,0 +1,12 @@
+{
+  "message": "Expenditure Successfully Added!",
+  "data": {
+    "description": "eye shadow",
+    "_id": "5bdd7f8eef72153750b2df76",
+    "username": "charlotte",
+    "date": "2018-10-28",
+    "payment": "cash",
+    "amount": 16,
+    "__v": 0
+  }
+}

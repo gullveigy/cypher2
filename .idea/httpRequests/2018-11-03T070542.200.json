@@ -1,0 +1,12 @@
+{
+  "message": "Expenditure Successfully Added!",
+  "data": {
+    "description": "the ordinary",
+    "_id": "5bdd8105ef72153750b2df7c",
+    "username": "diana",
+    "date": "2018-11-26",
+    "payment": "we chat",
+    "amount": 5.95,
+    "__v": 0
+  }
+}

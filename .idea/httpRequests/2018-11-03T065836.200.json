@@ -1,0 +1,12 @@
+{
+  "message": "Expenditure Successfully Added!",
+  "data": {
+    "description": "cola",
+    "_id": "5bdd7f5cef72153750b2df75",
+    "username": "gullveig",
+    "date": "2018-10-19",
+    "payment": "cash",
+    "amount": 2.1,
+    "__v": 0
+  }
+}

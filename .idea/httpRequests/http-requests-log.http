@@ -1,0 +1,140 @@
+POST http://localhost:3000/expenditures
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+ {"username":"diana","date":"2018-11-27","payment":"cash","amount":4,"description":"pork"}
+
+<> 2018-11-03T070622.200.json
+
+###
+
+POST http://localhost:3000/expenditures
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"username":"diana","date":"2018-11-26","payment":"we chat","amount":5.95,"description":"the ordinary"}
+
+<> 2018-11-03T070542.200.json
+
+###
+
+POST http://localhost:3000/expenditures
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+  {"username":"April","date":"2018-11-15","payment":"cash","amount":34,"description":"premier"}
+
+<> 2018-11-03T070435.200.json
+
+###
+
+POST http://localhost:3000/expenditures
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+ {"username":"April","date":"2018-11-05","payment":"we chat","amount":36,"description":"foundation"}
+
+<> 2018-11-03T070352.200.json
+
+###
+
+POST http://localhost:3000/expenditures
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+  {"username":"charlotte","date":"2018-11-03","payment":"Alipay","amount":13,"description":"sunscreen cream"}
+
+<> 2018-11-03T070300.200.json
+
+###
+
+POST http://localhost:3000/expenditures
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+ {"username":"charlotte","date":"2018-11-01","payment":"Alipay","amount":6,"description":"haribo"}
+
+<> 2018-11-03T070206.200.json
+
+###
+
+POST http://localhost:3000/expenditures
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+ {"username":"charlotte","date":"2018-10-29","payment":"cash","amount":9.99,"description":"nyx pencil"}
+
+<> 2018-11-03T070114.200.json
+
+###
+
+POST http://localhost:3000/expenditures
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+ {"username":"charlotte","date":"2018-10-28","payment":"cash","amount":16,"description":"eye shadow"}
+
+<> 2018-11-03T065927.200.json
+
+###
+
+POST http://localhost:3000/expenditures
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+  {"username":"gullveig","date":"2018-10-19","payment":"cash","amount":2.1,"description":"cola"}
+
+<> 2018-11-03T065836.200.json
+
+###
+
+POST http://localhost:3000/expenditures
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"username":"gullveig","date":"2018-10-16","payment":"Alipay","amount":2.5,"description":"chips"}
+
+<> 2018-11-03T065753.200.json
+
+###
+
+POST http://localhost:3000/expenditures
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+ {"username":"gullveig","date":"2018-10-15","payment":"we chat","amount":3,"description":"cheese"}
+
+<> 2018-11-03T065706.200.json
+
+###
+
+POST http://localhost:3000/expenditures
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{"username":"gullveig","date":"2018-10-15","payment":"Alipay","amount":4,"description":"Latte"}
+
+<> 2018-11-03T065600.200.json
+
+###
+
+GET http://localhost:3000/expenditures
+Accept: */*
+Cache-Control: no-cache
+
+<> 2018-11-03T060405.200.json
+
+###
+

@@ -1,0 +1,38 @@
+[
+  {
+    "description": "Acide Hyaluronique",
+    "_id": "5bc9148bb5170d3324971e85",
+    "username": "gullveig",
+    "date": "2018-11-03",
+    "payment": "Alipay",
+    "amount": 6.95,
+    "__v": 0
+  },
+  {
+    "description": "chips",
+    "_id": "5bd1b8d268f82d0dbc2f2c42",
+    "username": "gullveig",
+    "date": "2018-11-30",
+    "payment": "Alipay",
+    "amount": 3.5,
+    "__v": 0
+  },
+  {
+    "description": "cheese",
+    "_id": "5bd1b91168f82d0dbc2f2c43",
+    "username": "gullveig",
+    "date": "2018-10-21",
+    "payment": "cash",
+    "amount": 5.8,
+    "__v": 0
+  },
+  {
+    "description": "shoes",
+    "_id": "5bd25ba802f91240304d557f",
+    "username": "charlotte",
+    "date": "2018-11-10",
+    "payment": "cash",
+    "amount": 14.5,
+    "__v": 0
+  }
+]
