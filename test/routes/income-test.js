@@ -294,5 +294,45 @@ describe('Incomes', function (){
 
 
 
+    describe('GET /incomes/gettotal/:date',  () => {
+        it('should return total amounts of income of one month in an array', function(done) {
+            chai.request(server)
+                .get('/incomes/monthamount/2018-11')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(1);
+                    //let result = _.map(res.body, (expenditure) => {
+                    //return { description: expenditure.description,
+                    //amount: expenditure.amount }
+                    //});
+                    expect(res.body).to.include({ monthamounts: 3548 } );
+                    //{ description: 'books', amount: 15 }
+                    //);
+                    //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
+                    //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
+                    //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
+                    done();
+                });
+
+        });
+        it('should return a message for no relevant income records', function(done) {
+            chai.request(server)
+                .get('/incomes/monthamount/2019-12')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    //expect(res.body.length).to.equal(0);
+                    expect(res.body).to.have.property('Message','Sorry! Cannot find the incomes of this month!' ) ;
+                    done();
+                });
+        });
+
+    });
+
+
+
+
+
+
 
 });
