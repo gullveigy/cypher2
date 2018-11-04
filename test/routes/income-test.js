@@ -113,5 +113,41 @@ describe('Incomes', function (){
 
 
 
+    describe('GET /incomes/inamountorder',  () => {
+        it('should return all the income records in ascending order of amount in an array', function(done) {
+            chai.request(server)
+                .get('/incomes/inamountorder')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(12);
+                    let result = _.map(res.body, (income) => {
+                        return { description: income.description,
+                            amount: income.amount }
+                    });
+                    expect(result).to.include( { description: 'prize draw', amount: 35  },
+                        { description: 'prize draw', amount: 46 },
+                        { description: 'benefits', amount: 47.5 },
+                        { description: 'benefits', amount: 48 },
+                        { description: 'wages', amount: 57 },
+                        { description: 'benefits', amount: 78 },
+                        { description: 'wages', amount: 138 },
+                        { description: 'benefits', amount: 235 },
+                        { description: 'wages', amount: 580 },
+                        { description: 'wages', amount: 590 },
+                        { description: 'wages', amount: 1178 },
+                        { description: 'wages', amount: 1200 });
+                    //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
+                    //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
+                    //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
+                    done();
+                });
+
+        });
+    });
+
+
+
+
 
 });
