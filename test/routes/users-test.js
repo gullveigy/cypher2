@@ -129,4 +129,38 @@ describe('Users', function (){
         });
     });
 
+
+
+
+    describe('GET /users/:username/info',  () => {
+        it('should return a specific user matching the username in an array', function(done) {
+            chai.request(server)
+                .get('/users/gullveig/info')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(1);
+                    let result = _.map(res.body, (user) => {
+                        return { username: user.username,
+                                  gender: user.profile.gender, }
+                    });
+                    expect(result).to.include( { username: "gullveig", gender: 'female'  } );
+                    //expect(result).to.include( { username: "charlotte", password: 'szmmhfsbl1997' } );
+                    //expect(result).to.include( { username: "April", password: 'does19970506'  } );
+                    //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
+                    done();
+                });
+        });
+        it('should return a message for username that does not exist', function(done) {
+            chai.request(server)
+                .get('/users/1100001/info')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.have.property('Message','Sorry! Cannot find the user of this username!' ) ;
+                    done();
+                });
+        });
+
+    });
+
 });
