@@ -37,4 +37,42 @@ describe('Incomes', function (){
 
         });
     });
+
+
+
+    describe('GET /incomes/:id', function () {
+        it('should return a specific income record in an array', function(done) {
+            chai.request(server)
+                .get('/incomes/5bda4402467b3521a4b4a3a9')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(1);
+                    let result = _.map(res.body, (income) => {
+                        return { description: income.description,
+                            amount: income.amount }
+                    });
+                    expect(result).to.include( { description: "benefits", amount: 78  } );
+                    //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
+                    //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
+                    //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
+                    done();
+                });
+
+        });
+        it('should return a 404 and a message for invalid income id', function(done) {
+            chai.request(server)
+                .get('/incomes/1100001')
+                .end(function(err, res) {
+                    expect(res).to.have.status(404);
+                    expect(res.body).to.have.property('Message','Sorry! Cannot find the income of this id!' ) ;
+                    done();
+                });
+        });
+
+    });
+
+
+
+
 });
