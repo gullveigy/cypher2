@@ -369,6 +369,57 @@ describe('Incomes', function (){
 
 
 
+    describe('PUT /incomes/:id/changeIninfo', () => {
+        describe ('when id is valid',function() {
+            it('should return a confirmation message and update database', function (done) {
+                let income = {
+                    username: 'diana',
+                    description: 'bank return',
+                    date: '2018-12-04',
+                    payment: 'card',
+                    amount: 150
+                };
+                chai.request(server)
+                    .put('/incomes/5bdf591e2cfb171be0c9ec33/changeIninfo')
+                    .send(income)
+                    .end(function (err, res) {
+                        expect(res).to.have.status(200);
+                        expect(res.body).to.have.property('Message').equal('Income Successfully Changed!');
+                        let income = res.body.data;
+                        expect(income).to.include({description: 'bank return', date: '2018-12-04',amount:150});
+                        done();
+                    });
+            });
+            after(function  (done) {
+                chai.request(server)
+                    .get('/incomes')
+                    .end(function(err, res) {
+                        let result = _.map(res.body, (income) => {
+                            return { description: income.description,
+                                amount: income.amount };
+                        }  );
+                        expect(result).to.include( { description: 'bank return', amount: 150  } );
+                        done();
+                    });
+            });  // end-after
+        });
+        describe('when id is invalid',function() {
+            it('should return a 404 and a message for invalid income id', function (done) {
+                chai.request(server)
+                    .put('/incomes/1100001/changeIninfo')
+                    .end(function (err, res) {
+                        expect(res).to.have.status(404);
+                        expect(res.body).to.have.property('Message', 'Sorry! Cannot find the income by this id!');
+                        done();
+                    });
+            });
+        });
+    });
+
+
+
+
+
 
 
 
