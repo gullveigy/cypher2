@@ -42,4 +42,63 @@ describe('Users', function (){
         });  // end-after
     });
 
+
+
+    describe('PUT /users/:id/addProfile', () => {
+        describe ('when id is valid',function() {
+            it('should return a message and the information of this user updated', function (done) {
+                let user = {
+                    profile: {
+                        gender: 'female',
+                        //email: '1804094745@qq.com',
+                        phone: '166629816182',
+                        email: null
+                    }
+                };
+                chai.request(server)
+                    .put('/users/5bdde8b12f4b334e88f8d29f/addProfile')
+                    .send(user)
+                    .end(function (err, res) {
+                        expect(res).to.have.status(200);
+                        //let user = res.body.data ;
+                        expect(res.body).to.have.property('message', 'User Profile Successfully Updated!');
+                        //expect(res.body).to.have.property('message').equal('Expenditure Successfully Added!' );
+                        let profile = res.body.data.profile;
+                        expect(profile).to.include({gender:'female',phone: '166629816182',email: null } );
+                        done();
+                    });
+            });
+            after(function (done) {
+                chai.request(server)
+                    .get('/users/5bdde8b12f4b334e88f8d29f/profile')
+                    .end(function (err, res) {
+                        expect(res).to.have.status(200);
+                        expect(res.body).to.be.a('array');
+                        expect(res.body.length).to.equal(1);
+                        let result = _.map(res.body, (user) => {
+                            return { gender: user.profile.gender,
+                                phone: user.profile.phone,
+                                email: user.profile.email }
+                        });
+                        expect(result).to.include({gender: 'female', phone: '166629816182', email: null});
+                        done();
+                    });
+            });  // end-after
+
+
+        });
+        describe('when id is invalid',function() {
+            it('should return a 404 and a message for invalid user id', function (done) {
+                chai.request(server)
+                    .put('/users/1100001/addProfile')
+                    .end(function (err, res) {
+                        expect(res).to.have.status(404);
+                        expect(res.body).to.have.property('message', 'User NOT Found!');
+                        done();
+                    });
+            });
+        });
+
+    });
+
 });
