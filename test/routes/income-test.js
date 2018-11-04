@@ -331,6 +331,43 @@ describe('Incomes', function (){
 
 
 
+    describe('POST /incomes', function () {
+        it('should return confirmation message and update database', function(done) {
+            let income = {
+                username: 'diana',
+                date: '2018-12-04',
+                incomingmode: 'card' ,
+                amount: 120,
+                description: 'bank return'
+            };
+            chai.request(server)
+                .post('/incomes')
+                .send(income)
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.have.property('message').equal('Income Successfully Added!' );
+                    let income = res.body.data;
+                    expect(income).to.include({description: 'bank return', date: '2018-12-04'});
+                    done();
+                });
+        });
+        after(function  (done) {
+            chai.request(server)
+                .get('/incomes')
+                .end(function(err, res) {
+                    let result = _.map(res.body, (income) => {
+                        return { incomingmode: income.incomingmode,
+                            amount: income.amount };
+                    }  );
+                    expect(result).to.include( { incomingmode: 'card', amount: 120  } );
+                    done();
+                });
+        });  // end-after
+    });
+
+
+
+
 
 
 
