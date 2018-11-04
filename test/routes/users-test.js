@@ -200,4 +200,41 @@ describe('Users', function (){
 
     });
 
+
+
+
+
+    describe('GET /users/specificex/:username',  () => {
+        it('should return all the expenditure records of one user in an array', function(done) {
+            chai.request(server)
+                .get('/users/specificex/charlotte')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(4);
+                    let result = _.map(res.body, (expenditure) => {
+                        return { description: expenditure.description,
+                                  amount: expenditure.amount }
+                    });
+                    expect(result).to.include( { description: 'eye shadow', amount: 16  } );
+                    expect(result).to.include( { description: "nyx pencil", amount: 9.99  } );
+                    expect(result).to.include( { description: "haribo", amount: 6  } );
+                    expect(result).to.include( { description: "sunscreen cream", amount: 13  } );
+                    done();
+                });
+
+        });
+        it('should return a message for user has no expenditure records', function(done) {
+            chai.request(server)
+                .get('/users/specificex/charl')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.have.property('Message','You have no expenditures!' ) ;
+                    done();
+                });
+        });
+
+    });
+
+
 });
