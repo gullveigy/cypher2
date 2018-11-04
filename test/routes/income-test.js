@@ -421,6 +421,56 @@ describe('Incomes', function (){
 
 
 
+    describe('DELETE /incomes/:id', () => {
+        describe ('when id is valid',function(){
+            it('should return a confirmation message and update database ', function(done) {
+                chai.request(server)
+                    .delete('/incomes/5bdf591e2cfb171be0c9ec33')
+                    .end(function(err, res) {
+                        expect(res).to.have.status(200);
+                        expect(res.body).to.have.property('message','Income Successfully Deleted!' ) ;
+                        done();
+                    });
+
+            });
+            after(function  (done) {
+                chai.request(server)
+                    .get('/incomes')
+                    .end(function(err, res) {
+                        expect(res).to.have.status(200);
+                        expect(res.body).to.be.a('array');
+                        let result = _.map(res.body, function(income) {
+                            return { incomingmode: income.incomingmode,
+                                amount: income.amount };
+                        }  );
+                        //expect(result).to.have.lengthOf(1) ;
+                        //expect(result).to.not.include( { paymenttype: 'Paypal', amount: 1600  } );
+                        expect(result).to.not.include( { incomingmode: 'card', amount: 150  } );
+                        done();
+                    });
+            });  // end after
+        });
+        describe('when id is invalid',function(){
+            it('should return a 404 and a message for invalid income id', function(done) {
+                chai.request(server)
+                    .delete('/incomes/1100001')
+                    .end(function(err, res) {
+                        expect(res).to.have.status(404);
+                        expect(res.body).to.have.property('message','Income NOT DELETED!' ) ;
+                        done();
+                    });
+            });
+
+        });
+
+
+    });
+
+
+
+
+
+
 
 
 });
