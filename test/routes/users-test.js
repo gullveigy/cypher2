@@ -2,7 +2,7 @@ let chai = require('chai');
 let chaiHttp = require('chai-http');
 let server = require('../../bin/www');
 let expect = chai.expect;
-
+chai.use(require('chai-things'));
 chai.use(chaiHttp);
 let _ = require('lodash' );
 
@@ -77,8 +77,8 @@ describe('Users', function (){
                         expect(res.body.length).to.equal(1);
                         let result = _.map(res.body, (user) => {
                             return { gender: user.profile.gender,
-                                phone: user.profile.phone,
-                                email: user.profile.email }
+                                      phone: user.profile.phone,
+                                      email: user.profile.email }
                         });
                         expect(result).to.include({gender: 'female', phone: '166629816182', email: null});
                         done();
