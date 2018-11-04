@@ -101,4 +101,32 @@ describe('Users', function (){
 
     });
 
+
+
+
+    describe('GET /users',  () => {
+        it('should return all the users in an array', function(done) {
+            chai.request(server)
+                .get('/users')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(6);
+                    let result = _.map(res.body, (user) => {
+                        return { username: user.username,
+                                  password: user.password }
+                    });
+                    expect(result).to.include( { username: "gullveig", password: 'qwert1997'  } );
+                    expect(result).to.include( { username: "charlotte", password: 'qwert19970506' } );
+                    expect(result).to.include( { username: "April", password: 'does1997'  } );
+                    expect(result).to.include( { username: "diana", password: 'does19970506'  } );
+                    expect(result).to.include( { username: "Daniel", password: '19970506'  } );
+                    expect(result).to.include( { username: "Amber", password: '19293484857'  } );
+                    //expect(result).to.include( { username: "zoe", password: 'zoe0914'  } );
+                    done();
+                });
+
+        });
+    });
+
 });
