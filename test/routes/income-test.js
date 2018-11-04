@@ -75,4 +75,43 @@ describe('Incomes', function (){
 
 
 
+
+    describe('GET /incomes/daterecord/:date',  () => {
+        it('should return specific income records of one date in an array', function(done) {
+            chai.request(server)
+                .get('/incomes/daterecord/2018-11-01')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(1);
+                    let result = _.map(res.body, (income) => {
+                        return { description: income.description,
+                            amount: income.amount }
+                    });
+                    expect(result).to.include( //{ description: 'RIP card', amount: 300  },
+                        { description: 'wages', amount: 590 }
+                    );
+                    //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
+                    //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
+                    //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
+                    done();
+                });
+        });
+        it('should return a message for daterecord which do not exist', function(done) {
+            chai.request(server)
+                .get('/incomes/daterecord/2019-10-18')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    //expect(res.body.length).to.equal(0);
+                    expect(res.body).to.have.property('Message','Sorry! Cannot find the income of this date!' ) ;
+                    done();
+                });
+        });
+
+    });
+
+
+
+
+
 });
