@@ -227,6 +227,44 @@ describe('Incomes', function (){
 
 
 
+    describe('GET /incomes/fuzzy/:description',  () => {
+        it('should return relevant income records matching the fuzzy description in an array', function(done) {
+            chai.request(server)
+                .get('/incomes/fuzzy/pri')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(2);
+                    let result = _.map(res.body, (income) => {
+                        return { description: income.description,
+                            amount: income.amount }
+                    });
+                    expect(result).to.include( { description: 'prize draw', amount: 46  },
+                        { description: 'prize draw', amount: 35 }
+                    );
+                    //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
+                    //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
+                    //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
+                    done();
+                });
+
+        });
+        it('should return a message for no relevant records', function(done) {
+            chai.request(server)
+                .get('/incomes/fuzzy/123')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    //expect(res.body.length).to.equal(0);
+                    expect(res.body).to.have.property('Message','Sorry! Cannot find income by this description!' ) ;
+                    done();
+                });
+        });
+
+    });
+
+
+
+
 
 
 });
