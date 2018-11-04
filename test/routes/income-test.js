@@ -150,4 +150,42 @@ describe('Incomes', function (){
 
 
 
+    describe('GET /incomes/indateorder',  () => {
+        it('should return all the income records in ascending order of date in an array', function(done) {
+            chai.request(server)
+                .get('/incomes/indateorder')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(12);
+                    let result = _.map(res.body, (income) => {
+                        return { description: income.description,
+                            date: income.date }
+                    });
+                    expect(result).to.include( { description: 'benefits', date: '2018-10-01'  },
+                        { description: 'benefits', date: '2018-10-07' },
+                        { description: 'benefits', date: '2018-10-11' },
+                        { description: 'benefits', date: '2018-10-15' },
+                        { description: 'prize draw', date: '2018-10-15' },
+                        { description: 'wages', date: '2018-10-19' },
+                        { description: 'wages', date: '2018-10-25' },
+                        { description: 'prize draw', date: '2018-10-29' },
+                        { description: 'wages', date: '2018-11-01' },
+                        { description: 'wages', date: '2018-11-06' },
+                        { description: 'wages', date: '2018-11-08'},
+                        { description: 'wages', date: '2018-11-18'} );
+                    //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
+                    //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
+                    //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
+                    done();
+                });
+
+        });
+    });
+
+
+
+
+
+
 });
