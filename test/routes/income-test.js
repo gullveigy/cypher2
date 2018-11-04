@@ -376,7 +376,7 @@ describe('Incomes', function (){
                     username: 'diana',
                     description: 'bank return',
                     date: '2018-12-04',
-                    payment: 'card',
+                    incomingmode: 'card',
                     amount: 150
                 };
                 chai.request(server)
@@ -461,6 +461,39 @@ describe('Incomes', function (){
                     });
             });
 
+        });
+
+
+
+
+
+        describe('DELETE /incomes/fuzzy/incomingmode',  () => {
+            it('should return a confirmation message and update database ', function(done) {
+                chai.request(server)
+                    .delete('/incomes/fuzzy/car')
+                    .end(function(err, res) {
+                        expect(res).to.have.status(200);
+                        expect(res.body).to.have.property('Message','Income Deleted Successfully!' ) ;
+                        done();
+                    });
+            });
+            after(function  (done) {
+                chai.request(server)
+                    .get('/incomes')
+                    .end(function(err, res) {
+                        expect(res).to.have.status(200);
+                        expect(res.body).to.be.a('array');
+                        let result = _.map(res.body, function(income) {
+                            return { date: income.date,
+                                amount: income.amount };
+                        }  );
+                        //expect(result).to.have.lengthOf(1) ;
+                        //expect(result).to.not.include( { paymenttype: 'Paypal', amount: 1600  } );
+                        expect(result).to.not.include(
+                            { date: '2018-09-04', amount: 120  });
+                        done();
+                    });
+            });  // end after
         });
 
 

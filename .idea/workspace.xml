@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a56b2d4f-b5d1-4c33-8612-7269067830db" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/routes/income-test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/routes/income-test.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -39,7 +40,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="3068" />
+          <entry key="js" value="3227" />
           <entry key="json" value="29" />
           <entry key="txt" value="7" />
           <entry key="www" value="3" />
@@ -48,7 +49,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="29" />
-          <entry key="JavaScript" value="3071" />
+          <entry key="JavaScript" value="3230" />
           <entry key="PLAIN_TEXT" value="7" />
         </counts>
       </usages-collector>
@@ -68,8 +69,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/routes/expenditure-test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="135" column="11" lean-forward="true" selection-start-line="124" selection-start-column="8" selection-end-line="135" selection-end-column="11" />
+            <state relative-caret-position="323">
+              <caret line="170" column="7" lean-forward="true" selection-start-line="143" selection-start-column="4" selection-end-line="170" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -86,8 +87,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/routes/income-test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="736">
-              <caret line="458" column="75" selection-start-line="458" selection-start-column="75" selection-end-line="458" selection-end-column="75" />
+            <state relative-caret-position="190">
+              <caret line="472" column="47" selection-start-line="472" selection-start-column="47" selection-end-line="472" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -634,7 +635,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32423000" />
+    <option name="totallyTimeSpent" value="35419000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-35" y="0" width="1346" height="714" extended-state="0" />
@@ -731,6 +732,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/routes/expenditure-test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="170" column="7" lean-forward="true" selection-start-line="143" selection-start-column="4" selection-end-line="170" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="318">
@@ -738,17 +746,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/routes/expenditure-test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="135" column="11" lean-forward="true" selection-start-line="124" selection-start-column="8" selection-end-line="135" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/routes/income-test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="458" column="75" selection-start-line="458" selection-start-column="75" selection-end-line="458" selection-end-column="75" />
+        <state relative-caret-position="190">
+          <caret line="472" column="47" selection-start-line="472" selection-start-column="47" selection-end-line="472" selection-end-column="47" />
         </state>
       </provider>
     </entry>
