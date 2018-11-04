@@ -163,4 +163,41 @@ describe('Users', function (){
 
     });
 
+
+
+
+
+    describe('GET /users/:id/profile',  () => {
+        it('should return profile info of a user in an array', function(done) {
+            chai.request(server)
+                .get('/users/5bda48a9467b3521a4b4a3b5/profile')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(1);
+                    let result = _.map(res.body, (user) => {
+                        return { username:user.username,
+                                  gender: user.profile.gender,
+                                  email: user.profile.email }
+                    });
+                    expect(result).to.include( { username: 'gullveig', gender: 'female',email:'1804094745@qq.com'  } );
+                    //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
+                    //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
+                    //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
+                    done();
+                });
+
+        });
+        it('should return a 404 and a message for invalid user id', function(done) {
+            chai.request(server)
+                .get('/users/1100001/profile')
+                .end(function(err, res) {
+                    expect(res).to.have.status(404);
+                    expect(res.body).to.have.property('message','User NOT Found!' ) ;
+                    done();
+                });
+        });
+
+    });
+
 });
