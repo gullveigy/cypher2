@@ -101,9 +101,10 @@ router.findOnebyUsername = (req, res) => {                                      
 router.addExistUserProfile = (req, res) => {//add profile for exist user  PUT
 
     User.findById(req.params.id, function(err,user) {
-        if (err)
-            res.json({ message: 'User NOT Found!', errmsg : err } );
-        else {
+        if (err) {
+            res.status(404);
+            res.json({message: 'User NOT Found!', errmsg: err});
+        }else {
             user.profile.gender = req.body.profile.gender;
             user.profile.email = req.body.profile.email;
             user.profile.phone = req.body.profile.phone;
