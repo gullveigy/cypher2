@@ -266,5 +266,33 @@ describe('Incomes', function (){
 
 
 
+    describe('GET /incomes/tamounts',  () => {
+        it('should return the total amounts of income records in an array', function(done) {
+            chai.request(server)
+                .get('/incomes/tamounts')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(1);
+                    //let result = _.map(res.body, (expenditure) => {
+                    //return { description: expenditure.description,
+                    //amount: expenditure.amount }
+                    //});
+                    expect(res.body).to.include({ totalamounts: 4232.5 } );
+                    //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
+                    //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
+                    //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
+                    done();
+                });
+
+        });
+
+
+    });
+
+
+
+
+
 
 });
