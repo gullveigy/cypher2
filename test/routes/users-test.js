@@ -237,4 +237,41 @@ describe('Users', function (){
     });
 
 
+
+
+
+    describe('GET /users/specificin/:username',  () => {
+        it('should return all the income records of one user in an array', function(done) {
+            chai.request(server)
+                .get('/users/specificin/April')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(3);
+                    let result = _.map(res.body, (income) => {
+                        return { username: income.username,
+                                  description: income.description,
+                                  amount: income.amount }
+                    });
+                    expect(result).to.include( { username:'April',description: 'benefits', amount: 235  } );
+                    expect(result).to.include( { username:'April',description: "wages", amount: 580  } );
+                    expect(result).to.include( { username:'April',description: "wages", amount: 1200  } );
+                    //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
+                    done();
+                });
+
+        });
+        it('should return a message for user who has no income records', function(done) {
+            chai.request(server)
+                .get('/users/specificin/april')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.have.property('Message','You have no incomes!' ) ;
+                    done();
+                });
+        });
+
+    });
+
+
 });
