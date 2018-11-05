@@ -60,7 +60,7 @@ app.post('/users',users.addUserBasic);  //test                                  
 app.post('/incomes',income.addIncome);                    //test
 app.post('/expenditures',expenditure.addExpenditure);    //test                     //yes
 
-
+app.delete('/users/:username', users.deleteUserByUsername);
 app.delete('/incomes/:id', income.deleteIncome);          //test
 app.delete('/incomes/fuzzy/:incomingmode', income.deleteByIncomingmode);        //test
 //app.delete('/incomes', income.deleteAll);

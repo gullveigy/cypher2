@@ -98,6 +98,22 @@ router.findOnebyUsername = (req, res) => {                                      
 
 
 
+
+
+router.deleteUserByUsername = (req, res) => {                                                                      //delete record             delete
+
+    User.remove({ "username" : req.params.username }, function(err) {
+        if (err) {
+            res.status(404);
+            res.json({message: 'User NOT DELETED!', errmsg: err});
+        }else
+            res.json({ message: 'User Successfully Deleted!'});
+    });
+}
+
+
+
+
 router.addExistUserProfile = (req, res) => {//add profile for exist user  PUT
 
     User.findById(req.params.id, function(err,user) {

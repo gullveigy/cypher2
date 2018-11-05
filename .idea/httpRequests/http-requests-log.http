@@ -1,3 +1,36 @@
+DELETE http://localhost:3000/users/Ane
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"username":"diana","date":"2018-12-21","payment":"we chat","amount":2.95,"description":"cup"}
+
+<> 2018-11-06T120544.200.json
+
+###
+
+DELETE http://localhost:3000/users/Amber
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"username":"diana","date":"2018-12-21","payment":"we chat","amount":2.95,"description":"cup"}
+
+<> 2018-11-06T120526.200.json
+
+###
+
+DELETE http://localhost:3000/users/Amber
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"username":"diana","date":"2018-12-21","payment":"we chat","amount":2.95,"description":"cup"}
+
+<> 2018-11-06T120345.500.html
+
+###
+
 POST http://localhost:3000/expenditures
 Accept: */*
 Cache-Control: no-cache
