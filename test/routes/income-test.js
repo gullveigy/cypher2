@@ -373,20 +373,20 @@ describe('Incomes', function (){
         describe ('when id is valid',function() {
             it('should return a confirmation message and update database', function (done) {
                 let income = {
-                    username: 'diana',
+                    username: 'gullveig',
                     description: 'bank return',
-                    date: '2018-12-04',
-                    incomingmode: 'card',
+                    date: '2018-10-01',
+                    incomingmode: 'Alipay',
                     amount: 150
                 };
                 chai.request(server)
-                    .put('/incomes/5bdf591e2cfb171be0c9ec33/changeIninfo')
+                    .put('/incomes/5bda4402467b3521a4b4a3a9/changeIninfo')
                     .send(income)
                     .end(function (err, res) {
                         expect(res).to.have.status(200);
                         expect(res.body).to.have.property('Message').equal('Income Successfully Changed!');
                         let income = res.body.data;
-                        expect(income).to.include({description: 'bank return', date: '2018-12-04',amount:150});
+                        expect(income).to.include({description: 'bank return', date: '2018-10-01',amount:150});
                         done();
                     });
             });
@@ -396,9 +396,22 @@ describe('Incomes', function (){
                     .end(function(err, res) {
                         let result = _.map(res.body, (income) => {
                             return { description: income.description,
-                                amount: income.amount };
+                                      amount: income.amount };
                         }  );
                         expect(result).to.include( { description: 'bank return', amount: 150  } );
+                        //done();
+                    });
+                let income = {
+                    username: 'gullveig',
+                    description: 'benefits',
+                    date: '2018-10-01',
+                    incomingmode: 'Alipay',
+                    amount: 78
+                };
+                chai.request(server)
+                    .put('/incomes/5bda4402467b3521a4b4a3a9/changeIninfo')
+                    .send(income)
+                    .end(function (err, res) {
                         done();
                     });
             });  // end-after
@@ -422,52 +435,72 @@ describe('Incomes', function (){
 
 
     describe('DELETE /incomes/:id', () => {
-        describe ('when id is valid',function(){
-            it('should return a confirmation message and update database ', function(done) {
+        describe('when id is valid', function () {
+            it('should return a confirmation message and update database ', function (done) {
                 chai.request(server)
-                    .delete('/incomes/5bdf591e2cfb171be0c9ec33')
-                    .end(function(err, res) {
-                        expect(res).to.have.status(200);
-                        expect(res.body).to.have.property('message','Income Successfully Deleted!' ) ;
-                        done();
+                    .get('/incomes')
+                    .end(function (err, res) {
+                        const inId = res.body[12]._id;
+                        chai.request(server)
+                            .delete('/incomes/' + inId)
+                            .end(function (err, res) {
+                                expect(res).to.have.status(200);
+                                expect(res.body).to.have.property('message', 'Income Successfully Deleted!');
+                                done();
+                            });
                     });
 
             });
-            after(function  (done) {
+            after(function (done) {
                 chai.request(server)
                     .get('/incomes')
-                    .end(function(err, res) {
+                    .end(function (err, res) {
                         expect(res).to.have.status(200);
                         expect(res.body).to.be.a('array');
-                        let result = _.map(res.body, function(income) {
-                            return { incomingmode: income.incomingmode,
-                                amount: income.amount };
-                        }  );
+                        let result = _.map(res.body, function (income) {
+                            return {
+                                incomingmode: income.incomingmode,
+                                amount: income.amount
+                            };
+                        });
                         //expect(result).to.have.lengthOf(1) ;
                         //expect(result).to.not.include( { paymenttype: 'Paypal', amount: 1600  } );
-                        expect(result).to.not.include( { incomingmode: 'card', amount: 150  } );
+                        expect(result).to.not.include({incomingmode: 'card', amount: 150});
                         done();
                     });
             });  // end after
         });
-        describe('when id is invalid',function(){
-            it('should return a 404 and a message for invalid income id', function(done) {
+        describe('when id is invalid', function () {
+            it('should return a 404 and a message for invalid income id', function (done) {
                 chai.request(server)
                     .delete('/incomes/1100001')
-                    .end(function(err, res) {
+                    .end(function (err, res) {
                         expect(res).to.have.status(404);
-                        expect(res.body).to.have.property('message','Income NOT DELETED!' ) ;
+                        expect(res.body).to.have.property('message', 'Income NOT DELETED!');
                         done();
                     });
             });
 
         });
+    });
 
 
 
 
 
-        describe('DELETE /incomes/fuzzy/incomingmode',  () => {
+    describe('DELETE /incomes/fuzzy/incomingmode',  () => {
+           before(function () {
+               let income = {
+                   username: 'diana',
+                   date: '2018-12-04',
+                   payment: 'card' ,
+                   amount: 120,
+                   description: 'bank return'
+               };
+               chai.request(server)
+                    .post('/incomes')
+                    .send(income)
+           });
             it('should return a confirmation message and update database ', function(done) {
                 chai.request(server)
                     .delete('/incomes/fuzzy/car')
@@ -485,19 +518,19 @@ describe('Incomes', function (){
                         expect(res.body).to.be.a('array');
                         let result = _.map(res.body, function(income) {
                             return { date: income.date,
-                                amount: income.amount };
+                                      amount: income.amount };
                         }  );
                         //expect(result).to.have.lengthOf(1) ;
                         //expect(result).to.not.include( { paymenttype: 'Paypal', amount: 1600  } );
                         expect(result).to.not.include(
-                            { date: '2018-09-04', amount: 120  });
+                            { date: '2018-12-04', amount: 120  });
                         done();
                     });
             });  // end after
-        });
-
-
     });
+
+
+
 
 
 
