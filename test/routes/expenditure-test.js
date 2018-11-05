@@ -34,13 +34,20 @@ describe('Expenditures', function (){
                 .end(function(err, res) {
                     let result = _.map(res.body, (expenditure) => {
                         return { payment: expenditure.payment,
-                                  amount: expenditure.amount };
+                            amount: expenditure.amount };
                     }  );
                     expect(result).to.include( { payment: 'Visa card', amount: 10  } );
                     done();
                 });
+            //chai.request(server)
+            //.delete('/expenditures/fuzzydelete/2018-12')
+            //.end(function(err, res) {
+            //done();
+            //});
         });  // end-after
     });
+
+
 
 
 
@@ -48,20 +55,20 @@ describe('Expenditures', function (){
         describe ('when id is valid',function() {
             it('should return a confirmation message and update database', function (done) {
                 let expenditure = {
-                    username: 'April',
-                    description: 'glasses and snack',
-                    date: '2018-12-04',
-                    payment: 'Visa card',
-                    amount: 15
+                    username: 'gullveig',
+                    description: 'latte',
+                    date: '2018-10-14',
+                    payment: 'Alipay',
+                    amount: 4
                 };
                 chai.request(server)
-                    .put('/expenditures/5bdd88469dd67b3a4c06e09b/changeExinfo')
+                    .put('/expenditures/5bdd7ec0ef72153750b2df72/changeExinfo')
                     .send(expenditure)
                     .end(function (err, res) {
                         expect(res).to.have.status(200);
                         expect(res.body).to.have.property('Message').equal('Expenditure Successfully Changed!');
                         let expenditure = res.body.data;
-                        expect(expenditure).to.include({description: 'glasses and snack', date: '2018-12-04'});
+                        expect(expenditure).to.include({description: 'latte', date: '2018-10-14'});
                         done();
                     });
             });
@@ -71,9 +78,22 @@ describe('Expenditures', function (){
                     .end(function(err, res) {
                         let result = _.map(res.body, (expenditure) => {
                             return { description: expenditure.description,
-                                      amount: expenditure.amount };
+                                date: expenditure.date };
                         }  );
-                        expect(result).to.include( { description: 'glasses and snack', amount: 15  } );
+                        expect(result).to.include( { description: 'latte', date: '2018-10-14'  } );
+                        //done();
+                    });
+                let expenditure = {
+                    username: 'gullveig',
+                    description: 'Latte',
+                    date: '2018-10-15',
+                    payment: 'Alipay',
+                    amount: 4
+                };
+                chai.request(server)
+                    .put('/expenditures/5bdd7ec0ef72153750b2df72/changeExinfo')
+                    .send(expenditure)
+                    .end(function (err, res) {
                         done();
                     });
             });  // end-after
@@ -95,14 +115,33 @@ describe('Expenditures', function (){
 
     describe('DELETE /expenditures/:id', () => {
         describe ('when id is valid',function(){
+            //let exId;
+            //before(function () {
+            //chai.request(server)
+            //.get('/expenditures')
+            //.end(function(err, res) {
+            //const exId = res.body[12]._id;
+            //});
+            //});
             it('should return a confirmation message and update database ', function(done) {
                 chai.request(server)
-                    .delete('/expenditures/5bdd88469dd67b3a4c06e09b')
+                    .get('/expenditures')
                     .end(function(err, res) {
-                        expect(res).to.have.status(200);
-                        expect(res.body).to.have.property('message','Expenditure Successfully Deleted!' ) ;
-                        done();
+                        const exId = res.body[12]._id;
+                        chai.request(server)
+                            .delete('/expenditures/' + exId)
+                            .end(function(err, res) {
+                                expect(res).to.have.status(200);
+                                expect(res.body).to.have.property('message','Expenditure Successfully Deleted!' ) ;
+                                done();
+                            });
                     });
+                //.delete('/expenditures/' + exId)
+                //.end(function(err, res) {
+                //expect(res).to.have.status(200);
+                //expect(res.body).to.have.property('message','Expenditure Successfully Deleted!' ) ;
+                //done();
+                //});
 
             });
             after(function  (done) {
@@ -113,11 +152,11 @@ describe('Expenditures', function (){
                         expect(res.body).to.be.a('array');
                         let result = _.map(res.body, function(expenditure) {
                             return { payment: expenditure.payment,
-                                      amount: expenditure.amount };
+                                amount: expenditure.amount };
                         }  );
                         //expect(result).to.have.lengthOf(1) ;
                         //expect(result).to.not.include( { paymenttype: 'Paypal', amount: 1600  } );
-                        expect(result).to.not.include( { payment: 'Visa card', amount: 15  } );
+                        expect(result).to.not.include( { payment: 'Visa card', amount: 10  } );
                         done();
                     });
             });  // end after
@@ -141,7 +180,21 @@ describe('Expenditures', function (){
 
 
 
+
+
     describe('DELETE /expenditures/fuzzydelete/:date',  () => {
+        before(function () {
+            let expenditure = {
+                username: 'April',
+                date: '2018-12-04',
+                payment: 'Visa card' ,
+                amount: 10,
+                description: 'glasses'
+            };
+            chai.request(server)
+                .post('/expenditures')
+                .send(expenditure)
+        });
         it('should return a confirmation message and update database ', function(done) {
             chai.request(server)
                 .delete('/expenditures/fuzzydelete/2018-12')
@@ -159,18 +212,20 @@ describe('Expenditures', function (){
                     expect(res.body).to.be.a('array');
                     let result = _.map(res.body, function(expenditure) {
                         return { payment: expenditure.payment,
-                                  amount: expenditure.amount };
+                            amount: expenditure.amount };
                     }  );
                     //expect(result).to.have.lengthOf(1) ;
                     //expect(result).to.not.include( { paymenttype: 'Paypal', amount: 1600  } );
-                    expect(result).to.not.include( { payment: 'cash', amount: 5.2  },
-                                                    { payment: 'we chat', amount: 2.95  });
+                    expect(result).to.not.include( //{ payment: 'cash', amount: 5.2  },
+                        { payment: 'Visa card', amount: 10  });
                     done();
                 });
         });  // end after
     });
 
 
+
+    
 
     describe('GET /expenditures',  () => {
         it('should return all the expenditures in an array', function(done) {
