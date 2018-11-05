@@ -104,6 +104,40 @@ describe('Users', function (){
 
 
 
+
+    describe('DELETE /users/:username', () => {
+            it('should return a confirmation message and update database ', function(done) {
+                chai.request(server)
+                    .delete('/users/Amber')
+                    .end(function(err, res) {
+                        expect(res).to.have.status(200);
+                        expect(res.body).to.have.property('message','User Successfully Deleted!' ) ;
+                        done();
+                    });
+
+            });
+            after(function  (done) {
+                chai.request(server)
+                    .get('/users')
+                    .end(function(err, res) {
+                        expect(res).to.have.status(200);
+                        expect(res.body).to.be.a('array');
+                        let result = _.map(res.body, function(user) {
+                            return { username: user.username,
+                                      password: user.password };
+                        }  );
+                        //expect(result).to.have.lengthOf(1) ;
+                        //expect(result).to.not.include( { paymenttype: 'Paypal', amount: 1600  } );
+                        expect(result).to.not.include( { username: 'Amber', password: '19293484857'  } );
+                        done();
+                    });
+            });  // end after
+
+    });
+
+
+
+
     describe('GET /users',  () => {
         it('should return all the users in an array', function(done) {
             chai.request(server)
