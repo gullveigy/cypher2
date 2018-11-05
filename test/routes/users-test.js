@@ -34,7 +34,7 @@ describe('Users', function (){
                 .end(function(err, res) {
                     let result = _.map(res.body, (user) => {
                         return { username: user.username,
-                                  password: user.password };
+                            password: user.password };
                     }  );
                     expect(result).to.include( { username: 'Amber', password: '19293484857'  } );
                     done();
@@ -44,8 +44,10 @@ describe('Users', function (){
 
 
 
+
+
     describe('PUT /users/:id/addProfile', () => {
-        describe ('when id is valid',function() {
+        describe('when id is valid', function () {
             it('should return a message and the information of this user updated', function (done) {
                 let user = {
                     profile: {
@@ -56,7 +58,7 @@ describe('Users', function (){
                     }
                 };
                 chai.request(server)
-                    .put('/users/5bdde8b12f4b334e88f8d29f/addProfile')
+                    .put('/users/5bda48a9467b3521a4b4a3b5/addProfile')
                     .send(user)
                     .end(function (err, res) {
                         expect(res).to.have.status(200);
@@ -64,30 +66,44 @@ describe('Users', function (){
                         expect(res.body).to.have.property('message', 'User Profile Successfully Updated!');
                         //expect(res.body).to.have.property('message').equal('Expenditure Successfully Added!' );
                         let profile = res.body.data.profile;
-                        expect(profile).to.include({gender:'female',phone: '166629816182',email: null } );
+                        expect(profile).to.include({gender: 'female', phone: '166629816182', email: null});
                         done();
                     });
             });
             after(function (done) {
                 chai.request(server)
-                    .get('/users/5bdde8b12f4b334e88f8d29f/profile')
+                    .get('/users/5bda48a9467b3521a4b4a3b5/profile')
                     .end(function (err, res) {
                         expect(res).to.have.status(200);
                         expect(res.body).to.be.a('array');
                         expect(res.body.length).to.equal(1);
                         let result = _.map(res.body, (user) => {
-                            return { gender: user.profile.gender,
-                                      phone: user.profile.phone,
-                                      email: user.profile.email }
+                            return {
+                                gender: user.profile.gender,
+                                phone: user.profile.phone,
+                                email: user.profile.email
+                            }
                         });
                         expect(result).to.include({gender: 'female', phone: '166629816182', email: null});
+                        //done();
+                    });
+                let user = {
+                    profile: {
+                        gender: 'female',
+                        //email: '1804094745@qq.com',
+                        phone: '13046529705',
+                        email: '1804094745@qq.com'
+                    }
+                };
+                chai.request(server)
+                    .put('/users/5bda48a9467b3521a4b4a3b5/addProfile')
+                    .send(user)
+                    .end(function (err, res) {
                         done();
                     });
             });  // end-after
-
-
         });
-        describe('when id is invalid',function() {
+        describe('when id is invalid', function () {
             it('should return a 404 and a message for invalid user id', function (done) {
                 chai.request(server)
                     .put('/users/1100001/addProfile')
@@ -98,7 +114,6 @@ describe('Users', function (){
                     });
             });
         });
-
     });
 
 
@@ -106,32 +121,32 @@ describe('Users', function (){
 
 
     describe('DELETE /users/:username', () => {
-            it('should return a confirmation message and update database ', function(done) {
-                chai.request(server)
-                    .delete('/users/Amber')
-                    .end(function(err, res) {
-                        expect(res).to.have.status(200);
-                        expect(res.body).to.have.property('message','User Successfully Deleted!' ) ;
-                        done();
-                    });
+        it('should return a confirmation message and update database ', function(done) {
+            chai.request(server)
+                .delete('/users/Amber')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.have.property('message','User Successfully Deleted!' ) ;
+                    done();
+                });
 
-            });
-            after(function  (done) {
-                chai.request(server)
-                    .get('/users')
-                    .end(function(err, res) {
-                        expect(res).to.have.status(200);
-                        expect(res.body).to.be.a('array');
-                        let result = _.map(res.body, function(user) {
-                            return { username: user.username,
-                                      password: user.password };
-                        }  );
-                        //expect(result).to.have.lengthOf(1) ;
-                        //expect(result).to.not.include( { paymenttype: 'Paypal', amount: 1600  } );
-                        expect(result).to.not.include( { username: 'Amber', password: '19293484857'  } );
-                        done();
-                    });
-            });  // end after
+        });
+        after(function  (done) {
+            chai.request(server)
+                .get('/users')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    let result = _.map(res.body, function(user) {
+                        return { username: user.username,
+                            password: user.password };
+                    }  );
+                    //expect(result).to.have.lengthOf(1) ;
+                    //expect(result).to.not.include( { paymenttype: 'Paypal', amount: 1600  } );
+                    expect(result).to.not.include( { username: 'Amber', password: '19293484857'  } );
+                    done();
+                });
+        });  // end after
 
     });
 
@@ -145,7 +160,7 @@ describe('Users', function (){
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.be.a('array');
-                    expect(res.body.length).to.equal(6);
+                    expect(res.body.length).to.equal(5);
                     let result = _.map(res.body, (user) => {
                         return { username: user.username,
                                   password: user.password }
@@ -155,7 +170,7 @@ describe('Users', function (){
                     expect(result).to.include( { username: "April", password: 'does1997'  } );
                     expect(result).to.include( { username: "diana", password: 'does19970506'  } );
                     expect(result).to.include( { username: "Daniel", password: '19970506'  } );
-                    expect(result).to.include( { username: "Amber", password: '19293484857'  } );
+                    //expect(result).to.include( { username: "Amber", password: '19293484857'  } );
                     //expect(result).to.include( { username: "zoe", password: 'zoe0914'  } );
                     done();
                 });
