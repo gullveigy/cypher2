@@ -1,7 +1,7 @@
 # Assignment 1 - API testing and Source Control.
 
 Name: Ying Yan
-GitHub repository: https://github.com/gullveigy/MyAccountingAPItestings.git.
+GitHub repository: https://github.com/gullveigy/AccountingwithTestings.git.
 
 ## Overview.
 
@@ -64,79 +64,88 @@ Model: incomes
 My tests included the integration of MongoDB.(db name:"gullin",it has 3 collections:expendituredb/incomedb/userdb)
 
 1. expendituredb:
-    
-    1) database schema
-        let ExpenditureSchema = new mongoose.Schema({
-            username:String,
-            date: String,
-            payment:String,
-            amount: Number,
-            description:  {type: String, default:null}
-        },
-        { collection: 'expendituredb' });
-    2) json document structure example
-        {
-          "_id": {
-           "$oid": "5bdd7ec0ef72153750b2df72"
-        },
-          "description": "Latte",
-          "username": "gullveig",
-          "date": "2018-10-15",
-          "payment": "Alipay",
-          "amount": 4,
-          "__v": 0
-        }
+
+        1) database schema
+        
+            let ExpenditureSchema = new mongoose.Schema({
+                username:String,
+                date: String,
+                payment:String,
+                amount: Number,
+                description:  {type: String, default:null}
+            },
+            { collection: 'expendituredb' });
+
+        2) json document structure example
+
+            {
+              "_id": {
+               "$oid": "5bdd7ec0ef72153750b2df72"
+            },
+              "description": "Latte",
+              "username": "gullveig",
+              "date": "2018-10-15",
+              "payment": "Alipay",
+              "amount": 4,
+              "__v": 0
+            }
 
 2. incomedb:
 
-    1) database schema
-        let IncomeSchema = new mongoose.Schema({
-            username:String,
-            date: String,
-            incomingmode:String,
-            amount: Number,
-            description:  {type: String, default:null}
-        },
-        { collection: 'incomedb' });
-    2) json document structure example
-        {
-          "_id": {
-            "$oid": "5bda4402467b3521a4b4a3a9"
-        },
-          "description": "benefits",
-          "username": "gullveig",
-          "date": "2018-10-01",
-          "incomingmode": "Alipay",
-          "amount": 78,
-          "__v": 0
-        }
+        1) database schema
+
+            let IncomeSchema = new mongoose.Schema({
+                username:String,
+                date: String,
+                incomingmode:String,
+                amount: Number,
+                description:  {type: String, default:null}
+            },
+            { collection: 'incomedb' });
+
+        2) json document structure example
+
+            {
+              "_id": {
+                "$oid": "5bda4402467b3521a4b4a3a9"
+            },
+              "description": "benefits",
+              "username": "gullveig",
+              "date": "2018-10-01",
+              "incomingmode": "Alipay",
+              "amount": 78,
+              "__v": 0
+            }
 
 3. userdb:
 
-    1) database schema
-        let UserSchema = new mongoose.Schema({
-            username: { type:String, unique:true, required: true, writable: false},
-            password: { type:String, unique:true, required: true, writable: false,},
-            profile:{ gender: String,
+        1) database schema
+
+            let UserSchema = new mongoose.Schema({
+                username: { type:String, unique:true, required: true, writable: false},
+                password: { type:String, unique:true, required: true, writable: false,},
+                profile:{ gender: String,
                       email: String,
                       phone: String
-         },
-        },
-        { collection: 'userdb' });
-    2) json document structure example
-        {
-          "_id": {
-             "$oid": "5bda48a9467b3521a4b4a3b5"
-          },
-          "profile": {
-          "gender": "female",
-          "email": "1804094745@qq.com",
-          "phone": "13046529705"
-          },
-          "username": "gullveig",
-          "password": "qwert1997",
-          "__v": 0
-        }
+                },
+            },
+            { collection: 'userdb' });
+
+        2) json document structure example
+
+            {
+              "_id": {
+                 "$oid": "5bda48a9467b3521a4b4a3b5"
+              },
+              "profile": {
+              "gender": "female",
+              "email": "1804094745@qq.com",
+              "phone": "13046529705"
+              },
+              "username": "gullveig",
+              "password": "qwert1997",
+              "__v": 0
+            }
 
 
 
@@ -299,8 +308,9 @@ My tests included the integration of MongoDB.(db name:"gullin",it has 3 collecti
 [ Markdown Tip: By indenting the above listing, GitHub will display it in a 'box' and preserve any formatting.]
 
 ## Extra features.
-1. GitHub repository: https://github.com/gullveigy/MyAccountingAPItestings.git.
+1. GitHub repository: https://github.com/gullveigy/AccountingwithTestings.git.
 2. Before writing test code, I connected the node server to a background database dedicated to testing,so my test code runs on the basis of the test database, and it would not cause any changes to the original database.
 3. I implemented test-isolation,so each test file could be repeatedly run as a whole.
 4. I have committed the put operation test in income-test.js as a work unit ,because at that time I implemented the test in two steps and commit 2 messages on that branch.
 5. I have rolled back the code several times to a previous version(git reset --hard ........).
+6. I used some get functions in put operation test and delete operation test in my expenditure-test.js and users-test.js.Before writing these test codes,I had tested get functions I used.I deleted get functions test codes before committing put and delete test,just to make the code blocks look neat.
