@@ -32,6 +32,31 @@ describe('Incomes', function (){
 
 
 
+
+
+    describe('GET /:email/incomes',  () => {
+        it('should return all the income records in an array', function(done) {
+            chai.request(server)
+                .get('/1804094745@qq.com/incomes')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(2);
+                    let result = _.map(res.body, (income) => {
+                        return { message: income.message,
+                            amount: income.amount }
+                    });
+                    expect(result).to.include( { message: 'from Day', amount: 135  });
+                    expect(result).to.include( { message: 'Parttime Coffee', amount: 24  } );
+                    //expect(result).to.include( { message: 'Sophara Return', amount: 70  } );
+                    //expect(result).to.include( { message: 'Others', amount: 230  } );
+                    done();
+                });
+
+        });
+    });
+
+
     describe('GET /incomes/:id', function () {
         it('should return a specific income record in an array', function(done) {
             chai.request(server)
