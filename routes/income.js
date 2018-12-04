@@ -33,17 +33,19 @@ router.findAll = (req, res) => {                                                
 }
 
 
-router.findDateRecord = (req, res) => {                                                                      //find date record            get
-
+router.findUserAll = (req, res) => {                                                                               //findall                 get
+    // Return a JSON representation of our list
     res.setHeader('Content-Type', 'application/json');
 
-    Income.find({ "date" : req.params.date },function(err, income) {
-        if (income.length <= 0)
-            res.json({Message: 'Sorry! Cannot find the income of this date!'});
-        else
-            res.send(JSON.stringify(income,null,5));
+    Income.find({"email":req.params.email},function(err, incomes) {
+        if (err)
+            res.send(err);
+
+        res.send(JSON.stringify(incomes,null,5));
     });
 }
+
+
 
 
 router.findOne = (req, res) => {                                                                              //find one record           get
@@ -89,44 +91,10 @@ function compare(str) {                                    //升序排列
 }
 
 
-router.findAllinorder = (req, res) => {                                                                               //findall                 get
-    // Return a JSON representation of our list
+/*router.findUserMonthRecord = (req,res) => {                                                                     //寻找每月支出额             get
     res.setHeader('Content-Type', 'application/json');
-
-    Income.find(function(err, incomes) {
-        if (err)
-            res.send(err);
-        else {
-            var list = incomes.sort(compare("amount"));
-
-            res.send(JSON.stringify(list, null, 5));
-        }
-    });
-}
-
-
-
-
-router.findAllindateorder = (req, res) => {                                                                               //findall                 get
-    // Return a JSON representation of our list
-    res.setHeader('Content-Type', 'application/json');
-
-    Income.find(function(err, incomes) {
-        if (err)
-            res.send(err);
-        else {
-            var list = incomes.sort(compare("date"));
-
-            res.send(JSON.stringify(list, null, 5));
-        }
-    });
-}
-
-
-router.findMonthRecord = (req,res) => {                                                                     //寻找每月支出额             get
-    res.setHeader('Content-Type', 'application/json');
-    var keyword = {'date': {$regex:req.params.date, $options:'i'}};
-    Income.find(keyword, function(err, incomes) {
+    //var keyword = {'date': {$regex:req.params.date, $options:'i'}};
+    Income.find({"email":req.params.email,"date":{$regex:req.params.date, $options:'i'}}, function(err, incomes) {
         if (incomes.length <= 0)
             res.json({Message: 'Sorry! Cannot find the incomes of this month!'});
         //res.send(err);
@@ -135,7 +103,7 @@ router.findMonthRecord = (req,res) => {                                         
         res.send(JSON.stringify(list,null,5));
     });
 
-}
+}*/
 
 
 
@@ -145,11 +113,12 @@ router.addIncome = (req, res) => {                                              
     res.setHeader('Content-Type', 'application/json');
 
     var income = new Income();
-    income.username = req.body.username;
+    income.email = req.body.email;
     income.date = req.body.date;
     income.incomingmode = req.body.incomingmode;
     income.amount = req.body.amount;
-    income.description = req.body.description;
+    income.message = req.body.message;
+    income.type = req.body.type;
 
     income.save(function(err) {
         if (err)
@@ -175,21 +144,10 @@ router.deleteIncome = (req, res) => {                                           
 }
 
 
-//router.deleteAll = (req, res) => {
-//Return a JSON representation of our list
-//res.setHeader('Content-Type', 'application/json');
 
-//Income.remove(function(err) {
-//if (err)
-//res.json({ message: 'Income Not Found!'});
-//else
-//res.json({ message: 'Income Deleted Successfully!'});
-//});
-//}
+router.findUserTotalAmounts = (req, res) => {                                                                    //寻找支出总额               get
 
-router.findTotalAmounts = (req, res) => {                                                                    //寻找支出总额               get
-
-    Income.find(function(err, incomes) {//在出现的支出列表下面添加按钮找到支出总额，如果根本没有支出列表，那么就不会调用这个方法
+    Income.find({"email":req.params.email},function(err, incomes) {//在出现的支出列表下面添加按钮找到支出总额，如果根本没有支出列表，那么就不会调用这个方法
         if (err)
             res.send(err);
         //res.json({ totalamounts : 0 });
@@ -207,10 +165,11 @@ router.changeIncomeinfo = (req, res) => {                                       
             res.status(404);
             res.json({Message: 'Sorry! Cannot find the income by this id!'});
         }else {
-            income.description = req.body.description;
+            income.message = req.body.message;
             income.date = req.body.date;
             income.incomingmode = req.body.incomingmode;
             income.amount = req.body.amount;
+            income.type = req.body.type;
             income.save(function ( ) {
                 if (err)
                     res.json({ Message: 'Income NOT Changed!', errmsg: err});
@@ -222,73 +181,16 @@ router.changeIncomeinfo = (req, res) => {                                       
 }
 
 
-/*router.changeAmount = (req, res) => {                                                                //put 记录的description             put
-
-    Income.findById(req.params.id, function(err,income) {
-        if (err) {
-            res.status(404);
-            res.json({Message: 'Sorry! Cannot find the income by this id!'});
-        }else {
-            income.amount = req.body.amount;
-            income.save(function ( ) {
-                if (err)
-                    res.json({ Message: 'Income NOT Changed!', errmsg: err});
-                else
-                    res.json({ Message: 'Income Successfully Changed!', data: income });
-            });
-        }
-    });
-}*/
-
-
-
-/*router.changeIncomingmode = (req, res) => {                                                                //put 记录的description             put
-
-    Income.findById(req.params.id, function(err,income) {
-        if (err) {
-            res.status(404);
-            res.json({Message: 'Sorry! Cannot find the income by this id!'});
-        }else {
-            income.incomingmode = req.body.incomingmode;
-            income.save(function ( ) {
-                if (err)
-                    res.json({ Message: 'Income NOT Changed!', errmsg: err});
-                else
-                    res.json({ Message: 'Income Successfully Changed!', data: income });
-            });
-        }
-    });
-}*/
-
-
-
-/*router.changeDate = (req, res) => {                                                                //put 记录的description             put
-
-    Income.findById(req.params.id, function(err,income) {
-        if (err) {
-            res.status(404);
-            res.json({Message: 'Sorry! Cannot find the income by this id!'});
-        }else {
-            income.date = req.body.date;
-            income.save(function ( ) {
-                if (err)
-                    res.json({ Message: 'Income NOT Changed!', errmsg: err});
-                else
-                    res.json({ Message: 'Income Successfully Changed!', data: income });
-            });
-        }
-    });
-}*/
 
 
 
 
-router.findByDescription = (req, res) => {                                                            //通过的description查找记录，fuzzysearch    get
+router.findUserInByMessage = (req, res) => {                                                            //通过的description查找记录，fuzzysearch    get
     res.setHeader('Content-Type', 'application/json');
-    var keyword = {'description': {$regex:req.params.description, $options:'i'}};
-    Income.find(keyword, function(err,income) {
+    //var keyword = {'description': {$regex:req.params.description, $options:'i'}};
+    Income.find({"email":req.params.email,"message":{$regex:req.params.message, $options:'i'}}, function(err,income) {
         if (income.length <= 0)
-            res.json({Message: 'Sorry! Cannot find income by this description!'});
+            res.json({Message: 'Sorry! Cannot find income by this message!'});
         else
             res.send(JSON.stringify(income,null,5));
     });
@@ -296,10 +198,10 @@ router.findByDescription = (req, res) => {                                      
 
 
 
-router.findMonthAmount = (req,res) => {                                                                     //寻找每月支出额             get
+router.findUserMonthIncome = (req,res) => {                                                                     //寻找每月支出额             get
     res.setHeader('Content-Type', 'application/json');
-    var keyword = {'date': {$regex:req.params.date, $options:'i'}};
-    Income.find(keyword, function(err, incomes) {
+    //var keyword = {'date': {$regex:req.params.date, $options:'i'}};
+    Income.find({"email":req.params.email,"date":{$regex:req.params.date, $options:'i'}}, function(err, incomes) {
         if (incomes.length <= 0)
             res.json({Message: 'Sorry! Cannot find the incomes of this month!'});
         //res.send(err);
@@ -322,7 +224,7 @@ router.findMonthAmount = (req,res) => {                                         
 
 //}
 
-router.deleteByIncomingmode = (req, res) => {                                                       //通过incomingmode查找记录并删除 fuzzyseaarch      delete
+/*router.deleteByIncomingmode = (req, res) => {                                                       //通过incomingmode查找记录并删除 fuzzyseaarch      delete
     res.setHeader('Content-Type', 'application/json');
     var keyword = {'incomingmode': {$regex:req.params.incomingmode, $options:'i'}};
     Income.remove(keyword, function(err) {
@@ -334,7 +236,7 @@ router.deleteByIncomingmode = (req, res) => {                                   
         //res.json({ Message: 'Expenditure Deleted Successfully!'});
     });
 
-}
+}*/
 
 
 

@@ -1,0 +1,22 @@
+[
+  {
+    "_id": "5c06a9d7bc2a6545387ddba2",
+    "email": "1804094745@qq.com",
+    "date": "2018-10-01",
+    "payment": "we chat",
+    "type": "repast",
+    "amount": 2.95,
+    "message": "cup",
+    "__v": 0
+  },
+  {
+    "_id": "5c06aa21bc2a6545387ddba3",
+    "email": "1804094745@qq.com",
+    "date": "2018-10-02",
+    "payment": "cash",
+    "type": "traaffic",
+    "amount": 3,
+    "message": "JJ.Bus",
+    "__v": 0
+  }
+]

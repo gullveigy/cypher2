@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -18,6 +19,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 //app.use(logger('dev'));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -27,48 +29,37 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 
-app.get('/users/:id/profile', users.findUserProfile); //test                  //yes      no
-app.get('/users/:username/info', users.findOnebyUsername);                   //yes      no
+app.get('/users/:email', users.findOnebyEmail);                   //yes      no
 app.get('/users', users.findAllusers);    //test                                //yes
 app.get('/users/specificex/:username', users.findallexpenditures);//test    //yes      no
 app.get('/users/specificin/:username', users.findallincomes);//test         //yes      no
 
 
 
-app.get('/incomes', income.findAll);                                          //test
-app.get('/incomes/monthrecord/:date', income.findMonthRecord);
-app.get('/incomes/inamountorder', income.findAllinorder);                  //test
-app.get('/incomes/indateorder', income.findAllindateorder);                //test
-app.get('/incomes/tamounts', income.findTotalAmounts);                      //test
-app.get('/incomes/fuzzy/:description', income.findByDescription);         //test
-app.get('/incomes/daterecord/:date', income.findDateRecord);              //test
-app.get('/incomes/monthamount/:date', income.findMonthAmount);//find total amounts in one month              //test
+app.get('/incomes', income.findAll);//test
+app.get('/:email/incomes', income.findUserAll );
+app.get('/:email/incomes/tamounts', income.findUserTotalAmounts);                      //test
+app.get('/:email/incomes/fuzzy/:message', income.findUserInByMessage);         //test
+app.get('/:email/incomes/monthamount/:date', income.findUserMonthIncome);//find total amounts in one month              //test
 app.get('/incomes/:id', income.findOne);                                //test
 
-app.get('/expenditures', expenditure.findAll);                               //test          //yes
-app.get('/expenditures/monthrecord/:date', expenditure.findMonthRecord);                  //yes   no
-app.get('/expenditures/inamountorder', expenditure.findAllinorder);        //test          //yes
-app.get('/expenditures/indateorder', expenditure.findAllindateorder);      //test          //yes
-app.get('/expenditures/tamounts', expenditure.findTotalAmounts);           //test            //yes
-app.get('/expenditures/fuzzy/:description', expenditure.findByDescription);  //test          //yes          no
-app.get('/expenditures/daterecord/:date', expenditure.findDateRecord);       //test            //yes         no
-app.get('/expenditures/gettotal/:date', expenditure.findMonthAmount);//test                      //yes       no
+app.get('/expenditures', expenditure.findAll);//test          //yes
+app.get('/:email/expenditures', expenditure.findUserAll );
+app.get('/:email/expenditures/tamounts', expenditure.findUserTotalAmounts);           //test            //yes
+app.get('/:email/fuzzyEx/:message', expenditure.findUserExByMessage);  //test          //yes          no
+app.get('/:email/expenditures/gettotal/:date', expenditure.findUserMonthAmount);//test                      //yes       no
 app.get('/expenditures/:id', expenditure.findOne);           //test                                  //yes      no
 
 
-app.post('/users',users.addUserBasic);  //test                                        //yes
+app.post('/users',users.addUser);  //test                                        //yes
 app.post('/incomes',income.addIncome);                    //test
 app.post('/expenditures',expenditure.addExpenditure);    //test                     //yes
 
-app.delete('/users/:username', users.deleteUserByUsername);
+app.delete('/users/:email', users.deleteUserByEmail);
 app.delete('/incomes/:id', income.deleteIncome);          //test
-app.delete('/incomes/fuzzy/:incomingmode', income.deleteByIncomingmode);        //test
-//app.delete('/incomes', income.deleteAll);
 app.delete('/expenditures/:id', expenditure.deleteExpenditure);      //test                                //yes
-app.delete('/expenditures/fuzzydelete/:date', expenditure.deleteExpenditureByDate);   //test             //yes
-//app.delete('/expenditures', expenditure.deleteAll);
 
-app.put('/users/:id/addProfile', users.addExistUserProfile);//test                                            //yes    no
+//yes    no
 app.put('/expenditures/:id/changeExinfo', expenditure.changeExpenditureinfo);//test                          //yes   no
 //app.put('/expenditures/:id/changeAmount', expenditure.changeAmount);//test
 //app.put('/expenditures/:id/changeDate', expenditure.changeDate);//test

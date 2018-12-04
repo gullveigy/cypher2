@@ -42,7 +42,7 @@ router.findAllusers = (req, res) => {                                           
 
 
 
-router.findUserProfile = (req, res) => {
+/*router.findUserProfile = (req, res) => {
 
     res.setHeader('Content-Type', 'application/json');
 
@@ -54,21 +54,18 @@ router.findUserProfile = (req, res) => {
         //var list = user.profile;
             res.send(JSON.stringify(user,null,5));
     });
-}
+}*/
 
 
 
 //register process
-router.addUserBasic = (req, res) => {                                                                   //post record               post
+router.addUser = (req, res) => {                                                                   //post record               post
 
     res.setHeader('Content-Type', 'application/json');
 
     var user = new User();
-    user.username = req.body.username;
+    user.email = req.body.email;
     user.password = req.body.password;
-    user.profile.gender = null;
-    user.profile.email = null;
-    user.profile.phone = null;
 
     user.save(function(err) {
         if (err)
@@ -81,14 +78,14 @@ router.addUserBasic = (req, res) => {                                           
 
 
 
-router.findOnebyUsername = (req, res) => {                                                                              //find one record           get
+router.findOnebyEmail = (req, res) => {                                                                              //find one record           get
 
     res.setHeader('Content-Type', 'application/json');
 
-    User.find({ "username" : req.params.username },function(err, user) {
+    User.find({ "email" : req.params.email },function(err, user) {
         if (user.length <= 0) {
             //res.status(404);
-            res.json({Message: 'Sorry! Cannot find the user of this username!'});
+            res.json({Message: 'Sorry! Cannot find this user !'});
         }else
             res.send(JSON.stringify(user, null, 5));
 
@@ -100,9 +97,9 @@ router.findOnebyUsername = (req, res) => {                                      
 
 
 
-router.deleteUserByUsername = (req, res) => {                                                                      //delete record             delete
+router.deleteUserByEmail = (req, res) => {                                                                      //delete record             delete
 
-    User.remove({ "username" : req.params.username }, function(err) {
+    User.remove({ "email" : req.params.email }, function(err) {
         if (err) {
             res.status(404);
             res.json({message: 'User NOT DELETED!', errmsg: err});
@@ -114,7 +111,7 @@ router.deleteUserByUsername = (req, res) => {                                   
 
 
 
-router.addExistUserProfile = (req, res) => {//add profile for exist user  PUT
+/*router.addExistUserProfile = (req, res) => {//add profile for exist user  PUT
 
     User.findById(req.params.id, function(err,user) {
         if (err) {
@@ -132,7 +129,7 @@ router.addExistUserProfile = (req, res) => {//add profile for exist user  PUT
             });
         }
     });
-}
+}*/
 
 
 
@@ -144,7 +141,7 @@ router.findallexpenditures = (req, res) => {                                    
     // Return a JSON representation of our list
     res.setHeader('Content-Type', 'application/json');
 
-    Expenditure.find({ "username" : req.params.username },function(err, expenditures) {
+    Expenditure.find({ "email" : req.params.email },function(err, expenditures) {
         if (expenditures.length <= 0)
             res.json({Message: 'You have no expenditures!'});
         else if(err){
@@ -160,7 +157,7 @@ router.findallincomes = (req, res) => {                                         
     // Return a JSON representation of our list
     res.setHeader('Content-Type', 'application/json');
 
-    Income.find({ "username" : req.params.username },function(err, incomes) {
+    Income.find({ "email" : req.params.email },function(err, incomes) {
         if (incomes.length <= 0)
             res.json({Message: 'You have no incomes!'});
         else if(err){

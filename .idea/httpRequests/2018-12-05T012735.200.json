@@ -1,0 +1,13 @@
+{
+  "message": "Income Successfully Added!",
+  "data": {
+    "_id": "5c06b907a2e1f322dc9f42f4",
+    "email": "1804094746@qq.com",
+    "date": "2018-11-15",
+    "incomingmode": "Cash",
+    "amount": 70,
+    "message": "Sophara Return",
+    "type": "benefits",
+    "__v": 0
+  }
+}

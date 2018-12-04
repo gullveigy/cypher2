@@ -1,0 +1,9 @@
+{
+  "message": "User Successfully Added!",
+  "data": {
+    "_id": "5c06bbbb3bcbcf042c191c01",
+    "email": "1804094745@qq.com",
+    "password": "qwert19970506",
+    "__v": 0
+  }
+}

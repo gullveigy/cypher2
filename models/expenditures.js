@@ -1,11 +1,12 @@
 let mongoose = require('mongoose');
 
 let ExpenditureSchema = new mongoose.Schema({
-        username:String,
+        email:String,
         date: String,
         payment:String,
+        type:String,
         amount: Number,
-        description:  {type: String, default:"None"}
+        message: String
     },
     { collection: 'expendituredb' });
 

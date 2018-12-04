@@ -1,0 +1,13 @@
+{
+  "Message": "Income Successfully Changed!",
+  "data": {
+    "_id": "5c06b74a32a3c13b2c34dfbf",
+    "email": "1804094745@qq.com",
+    "date": "2018-10-12",
+    "incomingmode": "Alipay",
+    "amount": 135,
+    "message": "from Day",
+    "__v": 0,
+    "type": "wages"
+  }
+}

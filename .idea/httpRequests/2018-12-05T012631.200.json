@@ -1,0 +1,13 @@
+{
+  "message": "Income Successfully Added!",
+  "data": {
+    "_id": "5c06b8c6a2e1f322dc9f42f3",
+    "email": "1804094745@qq.com",
+    "date": "2018-10-30",
+    "incomingmode": "Cash",
+    "amount": 24,
+    "message": "Parttime Coffee",
+    "type": "benefits",
+    "__v": 0
+  }
+}

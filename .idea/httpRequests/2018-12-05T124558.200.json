@@ -1,0 +1,22 @@
+[
+  {
+    "_id": "5c06aa67bc2a6545387ddba4",
+    "email": "1804094746@qq.com",
+    "date": "2018-11-02",
+    "payment": "cash",
+    "type": "traffic",
+    "amount": 4,
+    "message": "Railway",
+    "__v": 0
+  },
+  {
+    "_id": "5c06aaa6bc2a6545387ddba5",
+    "email": "1804094746@qq.com",
+    "date": "2018-11-01",
+    "payment": "Alipay",
+    "type": "repast",
+    "amount": 1.95,
+    "message": "milk cheese",
+    "__v": 0
+  }
+]

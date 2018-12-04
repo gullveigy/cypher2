@@ -1,0 +1,13 @@
+{
+  "message": "Expenditure Successfully Added!",
+  "data": {
+    "_id": "5c06a73c66bd9e309cc21ac1",
+    "email": "1804094745@qq.com",
+    "date": "2018-10-01",
+    "payment": "we chat",
+    "type": "repast",
+    "amount": 2.95,
+    "message": "cup",
+    "__v": 0
+  }
+}

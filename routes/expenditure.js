@@ -29,10 +29,22 @@ router.findAll = (req, res) => {                                                
         if (err)
             res.send(err);
 
-        res.send(JSON.stringify(expenditures,null,5));
+        res.send(expenditures,null,5);
     });
 }
 
+
+router.findUserAll = (req, res) => {                                                                               //findall                 get
+    // Return a JSON representation of our list
+    res.setHeader('Content-Type', 'application/json');
+
+    Expenditure.find({"email": req.params.email},function(err, expenditures) {
+        if (err)
+            res.send(err);
+
+        res.send(expenditures,null,5);
+    });
+}
 //router.deleteAll = (req, res) => {
 // Return a JSON representation of our list
 //res.setHeader('Content-Type', 'application/json');
@@ -45,32 +57,6 @@ router.findAll = (req, res) => {                                                
 //});
 //}
 
-router.findDateRecord = (req, res) => {                                                                      //find date record            get
-
-    res.setHeader('Content-Type', 'application/json');
-
-    Expenditure.find({ "date" : req.params.date },function(err, expenditure) {
-        if (expenditure.length <= 0)
-            res.json({Message: 'Sorry! Cannot find the expenditure of this date!'});
-        else
-            res.send(JSON.stringify(expenditure,null,5));
-    });
-}
-
-
-router.findMonthRecord = (req,res) => {                                                                     //寻找每月支出额             get
-    res.setHeader('Content-Type', 'application/json');
-    var keyword = {'date': {$regex:req.params.date, $options:'i'}};
-    Expenditure.find(keyword, function(err, expenditures) {
-        if (expenditures.length <= 0)
-            res.json({Message: 'Sorry! Cannot find the expenditures of this month!'});
-        //res.send(err);
-        else
-            var list = expenditures.sort(compare("date"));
-        res.send(JSON.stringify(list,null,5));
-    });
-
-}
 
 
 
@@ -116,59 +102,17 @@ function compare(str) {                                    //升序排列
 
 
 
-
-
-
-
-
-
-router.findAllinorder = (req, res) => {                                                                               //findall                 get
-    // Return a JSON representation of our list
-    res.setHeader('Content-Type', 'application/json');
-
-    Expenditure.find(function(err, expenditures) {
-        if (err)
-            res.send(err);
-        else {
-            var list = expenditures.sort(compare("amount"));
-
-            res.send(JSON.stringify(list, null, 5));
-        }
-    });
-}
-
-
-
-router.findAllindateorder = (req, res) => {                                                                               //findall                 get
-    // Return a JSON representation of our list
-    res.setHeader('Content-Type', 'application/json');
-
-    Expenditure.find(function(err, expenditures) {
-        if (err)
-            res.send(err);
-        else {
-            var list = expenditures.sort(compare("date"));
-
-            res.send(JSON.stringify(list, null, 5));
-        }
-    });
-}
-
-
-
-
-
-
 router.addExpenditure = (req, res) => {                                                                   //post record               post
 
     res.setHeader('Content-Type', 'application/json');
 
     var expenditure = new Expenditure();
-    expenditure.username = req.body.username;
+    expenditure.email = req.body.email;
     expenditure.date = req.body.date;
     expenditure.payment = req.body.payment;
+    expenditure.type = req.body.type;
     expenditure.amount = req.body.amount;
-    expenditure.description = req.body.description;
+    expenditure.message = req.body.message;
 
     expenditure.save(function(err) {
         if (err)
@@ -194,9 +138,9 @@ router.deleteExpenditure = (req, res) => {                                      
 
 
 
-router.findTotalAmounts = (req, res) => {                                                                    //寻找支出总额               get
+router.findUserTotalAmounts = (req, res) => {                                                                    //寻找支出总额               get
 
-    Expenditure.find(function(err, expenditures) {//在出现的支出列表下面添加按钮找到支出总额，如果根本没有支出列表，那么就不会调用这个方法
+    Expenditure.find({"email": req.params.email},function(err, expenditures) {//在出现的支出列表下面添加按钮找到支出总额，如果根本没有支出列表，那么就不会调用这个方法
         if (err)
             res.send(err);
         //res.json({ totalamounts : 0 });
@@ -207,10 +151,10 @@ router.findTotalAmounts = (req, res) => {                                       
 
 
 
-router.findMonthAmount = (req,res) => {                                                                     //寻找每月支出额             get
+router.findUserMonthAmount = (req,res) => {                                                                     //寻找每月支出额             get
     res.setHeader('Content-Type', 'application/json');
-    var keyword = {'date': {$regex:req.params.date, $options:'i'}};
-    Expenditure.find(keyword, function(err, expenditures) {
+    //var keyword = {'date': {$regex:req.params.date, $options:'i'}};
+    Expenditure.find({"email":req.params.email,"date":{$regex:req.params.date, $options:'i'}}, function(err, expenditures) {
         if (expenditures.length <= 0)
             res.json({Message: 'Sorry! Cannot find the expenditures of this month!'});
         //res.send(err);
@@ -229,10 +173,11 @@ router.changeExpenditureinfo = (req, res) => {                                  
             res.status(404);
             res.json({Message: 'Sorry! Cannot find the expenditure by this id!'});
         }else {
-            expenditure.description = req.body.description;
+            expenditure.message = req.body.message;
             expenditure.amount = req.body.amount;
             expenditure.date = req.body.date;
             expenditure.payment = req.body.payment;
+            expenditure.type = req.body.type;
             expenditure.save(function ( ) {
                 if (err)
                     res.json({ Message: 'Expenditure NOT Changed!', errmsg: err});
@@ -246,71 +191,12 @@ router.changeExpenditureinfo = (req, res) => {                                  
 
 
 
-/*router.changeAmount = (req, res) => {                                                                //put 记录的description             put
-
-    Expenditure.findById(req.params.id, function(err,expenditure) {
-        if (err) {
-            res.status(404);
-            res.json({Message: 'Sorry! Cannot find the expenditure by this id!'});
-        }else {
-            expenditure.amount = req.body.amount;
-            expenditure.save(function ( ) {
-                if (err)
-                    res.json({ Message: 'Expenditure NOT Changed!', errmsg: err});
-                else
-                    res.json({ Message: 'Expenditure Successfully Changed!', data: expenditure });
-            });
-        }
-    });
-}*/
-
-
-/*router.changeDate = (req, res) => {                                                                //put 记录的description             put
-
-    Expenditure.findById(req.params.id, function(err,expenditure) {
-        if (err) {
-            res.status(404);
-            res.json({Message: 'Sorry! Cannot find the expenditure by this id!'});
-        }else {
-            expenditure.date = req.body.date;
-            expenditure.save(function ( ) {
-                if (err)
-                    res.json({ Message: 'Expenditure NOT Changed!', errmsg: err});
-                else
-                    res.json({ Message: 'Expenditure Successfully Changed!', data: expenditure });
-            });
-        }
-    });
-}*/
-
-
-
-/*router.changePayment = (req, res) => {                                                                //put 记录的description             put
-
-    Expenditure.findById(req.params.id, function(err,expenditure) {
-        if (err) {
-            res.status(404);
-            res.json({Message: 'Sorry! Cannot find the expenditure by this id!'});
-        }else {
-            expenditure.payment = req.body.payment;
-            expenditure.save(function ( ) {
-                if (err)
-                    res.json({ Message: 'Expenditure NOT Changed!', errmsg: err});
-                else
-                    res.json({ Message: 'Expenditure Successfully Changed!', data: expenditure });
-            });
-        }
-    });
-}*/
-
-
-
-router.findByDescription = (req, res) => {                                                            //通过的description查找记录，fuzzysearch    get
+router.findUserExByMessage = (req, res) => {                                                            //通过的description查找记录，fuzzysearch    get
     res.setHeader('Content-Type', 'application/json');
-    var keyword = {'description': {$regex:req.params.description, $options:'i'}};
-    Expenditure.find(keyword, function(err,expenditure) {
+    //var keyword = {'description': {$regex:req.params.description, $options:'i'}};
+    Expenditure.find({"email": req.params.email,'message':{$regex:req.params.message, $options:'i'}}, function(err,expenditure) {
         if (expenditure.length <= 0)
-            res.json({Message: 'Sorry! Cannot find this expenditure by description!'});
+            res.json({Message: 'Sorry! Cannot find this expenditure by this message!'});
         else
             res.send(JSON.stringify(expenditure,null,5));
     });
@@ -319,7 +205,7 @@ router.findByDescription = (req, res) => {                                      
 
 
 
-router.deleteExpenditureByDate = (req, res) => {                                                       //通过date查找记录并删除 fuzzyseaarch      delete
+/*router.deleteExpenditureByDate = (req, res) => {                                                       //通过date查找记录并删除 fuzzyseaarch      delete
     res.setHeader('Content-Type', 'application/json');
     var keyword = {'date': {$regex:req.params.date, $options:'i'}};
     Expenditure.remove(keyword, function(err) {
@@ -331,7 +217,7 @@ router.deleteExpenditureByDate = (req, res) => {                                
         //res.json({ Message: 'Expenditure Deleted Successfully!'});
     });
 
-}
+}*/
 
 
 

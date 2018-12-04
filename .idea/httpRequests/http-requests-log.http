@@ -1,3 +1,472 @@
+POST http://localhost:3000/users/
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","password":"19970506"}
+
+<> 2018-12-05T015430.200.json
+
+###
+
+POST http://localhost:3000/users/
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094745@qq.com","password":"qwert"}
+
+<> 2018-12-05T015415.200.json
+
+###
+
+POST http://localhost:3000/users/
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094745@qq.com","password":"qwert"}
+
+<> 2018-12-05T014655.200.json
+
+###
+
+POST http://localhost:3000/users/
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","password":"19970506"}
+
+<> 2018-12-05T014618.200.json
+
+###
+
+GET http://localhost:3000/users/
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","password":"19970506"}
+
+<> 2018-12-05T014606.200.json
+
+###
+
+DELETE http://localhost:3000/users/1804094745@qq.com
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","password":"19970506"}
+
+<> 2018-12-05T014555.200.json
+
+###
+
+POST http://localhost:3000/users
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","password":"19970506"}
+
+<> 2018-12-05T014312.200.json
+
+###
+
+POST http://localhost:3000/users
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","password":"19970506"}
+
+###
+
+POST http://localhost:3000/users
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","password":"19970506"}
+
+<> 2018-12-05T014001.200.json
+
+###
+
+POST http://localhost:3000/users
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","password":"qwert19970507"}
+
+<> 2018-12-05T013922.200.json
+
+###
+
+POST http://localhost:3000/users
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094745@qq.com","password":"qwert19970506"}
+
+<> 2018-12-05T013907.200.json
+
+###
+
+POST http://localhost:3000/users
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094745@qq.com","password":"qwert19970506"}
+
+<> 2018-12-05T013759.200.json
+
+###
+
+GET http://localhost:3000/1804094745@qq.com/incomes/monthamount/2018-11
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","date":"2018-11-20","incomingmode":"Wechat","type":"wages","amount":230,"message":"Others"}
+
+<> 2018-12-05T013535.200.json
+
+###
+
+GET http://localhost:3000/1804094745@qq.com/incomes/monthamount/2018-10
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","date":"2018-11-20","incomingmode":"Wechat","type":"wages","amount":230,"message":"Others"}
+
+<> 2018-12-05T013531.200.json
+
+###
+
+GET http://localhost:3000/1804094745@qq.com/incomes/fuzzy/ro
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","date":"2018-11-20","incomingmode":"Wechat","type":"wages","amount":230,"message":"Others"}
+
+<> 2018-12-05T013509.200.json
+
+###
+
+GET http://localhost:3000/1804094745@qq.com/incomes/fuzzy/ro
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","date":"2018-11-20","incomingmode":"Wechat","type":"wages","amount":230,"message":"Others"}
+
+###
+
+GET http://localhost:3000/1804094745@qq.com/incomes/tamounts
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","date":"2018-11-20","incomingmode":"Wechat","type":"wages","amount":230,"message":"Others"}
+
+<> 2018-12-05T013257.200.json
+
+###
+
+GET http://localhost:3000/1804094745@qq.com/incomes/tamouts
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","date":"2018-11-20","incomingmode":"Wechat","type":"wages","amount":230,"message":"Others"}
+
+<> 2018-12-05T013248.404.html
+
+###
+
+GET http://localhost:3000/1804094745@qq.com/incomes/tamoounts
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","date":"2018-11-20","incomingmode":"Wechat","type":"wages","amount":230,"message":"Others"}
+
+<> 2018-12-05T013244.404.html
+
+###
+
+GET http://localhost:3000/1804094745@qq.com/incomes
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","date":"2018-11-20","incomingmode":"Wechat","type":"wages","amount":230,"message":"Others"}
+
+<> 2018-12-05T013232.200.json
+
+###
+
+GET http://localhost:3000/incomes
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","date":"2018-11-20","incomingmode":"Wechat","type":"wages","amount":230,"message":"Others"}
+
+<> 2018-12-05T013223.200.json
+
+###
+
+GET http://localhost:3000/1804094745@qq.com/incomes
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","date":"2018-11-20","incomingmode":"Wechat","type":"wages","amount":230,"message":"Others"}
+
+<> 2018-12-05T013120.200.json
+
+###
+
+GET http://localhost:3000/incomes
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","date":"2018-11-20","incomingmode":"Wechat","type":"wages","amount":230,"message":"Others"}
+
+<> 2018-12-05T013105.200.json
+
+###
+
+POST http://localhost:3000/incomes
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","date":"2018-11-20","incomingmode":"Wechat","type":"wages","amount":230,"message":"Others"}
+
+<> 2018-12-05T012828.200.json
+
+###
+
+POST http://localhost:3000/incomes
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","date":"2018-11-15","incomingmode":"Cash","type":"benefits","amount":70,"message":"Sophara Return"}
+
+<> 2018-12-05T012735.200.json
+
+###
+
+POST http://localhost:3000/incomes
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094745@qq.com","date":"2018-10-30","incomingmode":"Cash","type":"benefits","amount":24,"message":"Parttime Coffee"}
+
+<> 2018-12-05T012631.200.json
+
+###
+
+POST http://localhost:3000/incomes
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094745@qq.com","date":"2018-10-30","incomingmode":"Cash","type":"benefits","amount":24,"message":"Parttime Coffee"}
+
+<> 2018-12-05T012552.200.json
+
+###
+
+PUT http://localhost:3000/incomes/5c06b74a32a3c13b2c34dfbf/changeIninfo
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094745@qq.com","date":"2018-10-12","incomingmode":"Alipay","type":"wages","amount":135,"message":"from Day"}
+
+<> 2018-12-05T012352.200.json
+
+###
+
+POST http://localhost:3000/incomes
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094745@qq.com","date":"2018-10-12","incomingmode":"Alipay","type":"wages","amount":135,"message":"from Day"}
+
+<> 2018-12-05T012010.200.json
+
+###
+
+POST http://localhost:3000/1804094746@qq.com/expenditures/gettotal/2018-11
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094745@qq.com","date":"2018-10-12","incomingmode":"Alipay","type":"wages","amount":135,"message":"from Day"}
+
+<> 2018-12-05T011951.404.html
+
+###
+
+GET http://localhost:3000/1804094746@qq.com/expenditures/gettotal/2018-11
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","date":"2018-11-01","payment":"Alipay","type":"repast","amount":1.95,"message":"milk cheese"}
+
+<> 2018-12-05T124657.200.json
+
+###
+
+GET http://localhost:3000/1804094746@qq.com/expenditures/gettotal/2018-10
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","date":"2018-11-01","payment":"Alipay","type":"repast","amount":1.95,"message":"milk cheese"}
+
+<> 2018-12-05T124654.200.json
+
+###
+
+GET http://localhost:3000/1804094746@qq.com/fuzzyEx/il
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","date":"2018-11-01","payment":"Alipay","type":"repast","amount":1.95,"message":"milk cheese"}
+
+<> 2018-12-05T124558.200.json
+
+###
+
+GET http://localhost:3000/1804094746@qq.com/expenditures/tamounts
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","date":"2018-11-01","payment":"Alipay","type":"repast","amount":1.95,"message":"milk cheese"}
+
+<> 2018-12-05T124214.200.json
+
+###
+
+GET http://localhost:3000/1804094746@qq.com/expenditures/
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","date":"2018-11-01","payment":"Alipay","type":"repast","amount":1.95,"message":"milk cheese"}
+
+<> 2018-12-05T124157.200.json
+
+###
+
+GET http://localhost:3000/expenditures/
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","date":"2018-11-01","payment":"Alipay","type":"repast","amount":1.95,"message":"milk cheese"}
+
+<> 2018-12-05T124133.200.json
+
+###
+
+GET http://localhost:3000/1804094745@qq.com/expenditures/
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","date":"2018-11-01","payment":"Alipay","type":"repast","amount":1.95,"message":"milk cheese"}
+
+<> 2018-12-05T123021.200.json
+
+###
+
+POST http://localhost:3000/expenditures/
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","date":"2018-11-01","payment":"Alipay","type":"repast","amount":1.95,"message":"milk cheese"}
+
+<> 2018-12-05T122614.200.json
+
+###
+
+POST http://localhost:3000/expenditures/
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094746@qq.com","date":"2018-11-02","payment":"cash","type":"traffic","amount":4,"message":"Railway"}
+
+<> 2018-12-05T122511.200.json
+
+###
+
+POST http://localhost:3000/expenditures/
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094745@qq.com","date":"2018-10-02","payment":"cash","type":"traaffic","amount":3,"message":"JJ.Bus"}
+
+<> 2018-12-05T122401.200.json
+
+###
+
+POST http://localhost:3000/expenditures/
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094745@qq.com","date":"2018-10-01","payment":"we chat","type":"repast","amount":2.95,"message":"cup"}
+
+<> 2018-12-05T122247.200.json
+
+###
+
+POST http://localhost:3000/expenditures/
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"email":"1804094745@qq.com","date":"2018-10-01","payment":"we chat","type":"repast","amount":2.95,"message":"cup"}
+
+<> 2018-12-05T121141.200.json
+
+###
+
+DELETE http://localhost:3000/expenditures/5c01d7245e24f6169058a129
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+   {"username":"diana","date":"2018-12-21","payment":"we chat","amount":2.95,"description":"cup"}
+
+<> 2018-12-02T035412.200.json
+
+###
+
 DELETE http://localhost:3000/users/Ane
 Accept: */*
 Cache-Control: no-cache
@@ -72,124 +541,6 @@ Content-Type: application/json
 {"username":"diana","date":"2018-11-26","payment":"we chat","amount":5.95,"description":"the ordinary"}
 
 <> 2018-11-03T070542.200.json
-
-###
-
-POST http://localhost:3000/expenditures
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json
-
-  {"username":"April","date":"2018-11-15","payment":"cash","amount":34,"description":"premier"}
-
-<> 2018-11-03T070435.200.json
-
-###
-
-POST http://localhost:3000/expenditures
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json
-
- {"username":"April","date":"2018-11-05","payment":"we chat","amount":36,"description":"foundation"}
-
-<> 2018-11-03T070352.200.json
-
-###
-
-POST http://localhost:3000/expenditures
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json
-
-  {"username":"charlotte","date":"2018-11-03","payment":"Alipay","amount":13,"description":"sunscreen cream"}
-
-<> 2018-11-03T070300.200.json
-
-###
-
-POST http://localhost:3000/expenditures
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json
-
- {"username":"charlotte","date":"2018-11-01","payment":"Alipay","amount":6,"description":"haribo"}
-
-<> 2018-11-03T070206.200.json
-
-###
-
-POST http://localhost:3000/expenditures
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json
-
- {"username":"charlotte","date":"2018-10-29","payment":"cash","amount":9.99,"description":"nyx pencil"}
-
-<> 2018-11-03T070114.200.json
-
-###
-
-POST http://localhost:3000/expenditures
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json
-
- {"username":"charlotte","date":"2018-10-28","payment":"cash","amount":16,"description":"eye shadow"}
-
-<> 2018-11-03T065927.200.json
-
-###
-
-POST http://localhost:3000/expenditures
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json
-
-  {"username":"gullveig","date":"2018-10-19","payment":"cash","amount":2.1,"description":"cola"}
-
-<> 2018-11-03T065836.200.json
-
-###
-
-POST http://localhost:3000/expenditures
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json
-
-   {"username":"gullveig","date":"2018-10-16","payment":"Alipay","amount":2.5,"description":"chips"}
-
-<> 2018-11-03T065753.200.json
-
-###
-
-POST http://localhost:3000/expenditures
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json
-
- {"username":"gullveig","date":"2018-10-15","payment":"we chat","amount":3,"description":"cheese"}
-
-<> 2018-11-03T065706.200.json
-
-###
-
-POST http://localhost:3000/expenditures
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json
-
-{"username":"gullveig","date":"2018-10-15","payment":"Alipay","amount":4,"description":"Latte"}
-
-<> 2018-11-03T065600.200.json
-
-###
-
-GET http://localhost:3000/expenditures
-Accept: */*
-Cache-Control: no-cache
-
-<> 2018-11-03T060405.200.json
 
 ###
 

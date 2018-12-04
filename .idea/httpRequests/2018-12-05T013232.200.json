@@ -1,0 +1,22 @@
+[
+  {
+    "_id": "5c06b74a32a3c13b2c34dfbf",
+    "email": "1804094745@qq.com",
+    "date": "2018-10-12",
+    "incomingmode": "Alipay",
+    "amount": 135,
+    "message": "from Day",
+    "__v": 0,
+    "type": "wages"
+  },
+  {
+    "_id": "5c06b8c6a2e1f322dc9f42f3",
+    "email": "1804094745@qq.com",
+    "date": "2018-10-30",
+    "incomingmode": "Cash",
+    "amount": 24,
+    "message": "Parttime Coffee",
+    "type": "benefits",
+    "__v": 0
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "message": "Expenditure Successfully Added!",
+  "data": {
+    "_id": "5c06aa21bc2a6545387ddba3",
+    "email": "1804094745@qq.com",
+    "date": "2018-10-02",
+    "payment": "cash",
+    "type": "traaffic",
+    "amount": 3,
+    "message": "JJ.Bus",
+    "__v": 0
+  }
+}

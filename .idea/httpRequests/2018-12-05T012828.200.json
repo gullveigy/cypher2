@@ -1,0 +1,13 @@
+{
+  "message": "Income Successfully Added!",
+  "data": {
+    "_id": "5c06b93ca2e1f322dc9f42f5",
+    "email": "1804094746@qq.com",
+    "date": "2018-11-20",
+    "incomingmode": "Wechat",
+    "amount": 230,
+    "message": "Others",
+    "type": "wages",
+    "__v": 0
+  }
+}

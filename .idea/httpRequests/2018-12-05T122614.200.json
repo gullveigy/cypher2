@@ -1,0 +1,13 @@
+{
+  "message": "Expenditure Successfully Added!",
+  "data": {
+    "_id": "5c06aaa6bc2a6545387ddba5",
+    "email": "1804094746@qq.com",
+    "date": "2018-11-01",
+    "payment": "Alipay",
+    "type": "repast",
+    "amount": 1.95,
+    "message": "milk cheese",
+    "__v": 0
+  }
+}
