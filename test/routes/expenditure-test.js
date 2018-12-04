@@ -211,6 +211,31 @@ describe('Expenditures', function (){
 
 
 
+    describe('GET /:email/expenditures',  () => {
+        it('should return all the income records in an array', function(done) {
+            chai.request(server)
+                .get('/1804094745@qq.com/expenditures')
+                .end(function(err, res) {
+                    expect(res).to.have.status(200);
+                    expect(res.body).to.be.a('array');
+                    expect(res.body.length).to.equal(2);
+                    let result = _.map(res.body, (expenditure) => {
+                        return { message: expenditure.message,
+                            amount: expenditure.amount }
+                    });
+                    expect(result).to.include( { message: 'cup', amount: 2.95  });
+                    expect(result).to.include( { message: 'JJ.Bus', amount: 3  } );
+                    //expect(result).to.include( { message: 'Sophara Return', amount: 70  } );
+                    //expect(result).to.include( { message: 'Others', amount: 230  } );
+                    done();
+                });
+
+        });
+    });
+
+
+
+
     describe('GET /expenditures/:id', function () {
         it('should return a specific expenditure in an array', function(done) {
             chai.request(server)
