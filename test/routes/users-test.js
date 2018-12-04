@@ -11,7 +11,7 @@ describe('Users', function (){
     describe('POST /users', function () {
         it('should return confirmation message and update database', function(done) {
             let user = {
-                username: 'Amber' ,
+                email: '1804094747@qq.com' ,
                 password: '19293484857'
                 //payment: 'Visa card' ,
                 //amount: 300,
@@ -24,7 +24,7 @@ describe('Users', function (){
                     expect(res).to.have.status(200);
                     expect(res.body).to.have.property('message').equal('User Successfully Added!' );
                     let user = res.body.data;
-                    expect(user).to.include({username: 'Amber', password: '19293484857'});
+                    expect(user).to.include({email: '1804094747@qq.com', password: '19293484857'});
                     done();
                 });
         });
@@ -33,10 +33,10 @@ describe('Users', function (){
                 .get('/users')
                 .end(function(err, res) {
                     let result = _.map(res.body, (user) => {
-                        return { username: user.username,
+                        return { email: user.email,
                             password: user.password };
                     }  );
-                    expect(result).to.include( { username: 'Amber', password: '19293484857'  } );
+                    expect(result).to.include( { email: '1804094747@qq.com', password: '19293484857'  } );
                     done();
                 });
         });  // end-after
@@ -46,84 +46,11 @@ describe('Users', function (){
 
 
 
-    describe('PUT /users/:id/addProfile', () => {
-        describe('when id is valid', function () {
-            it('should return a message and the information of this user updated', function (done) {
-                let user = {
-                    profile: {
-                        gender: 'female',
-                        //email: '1804094745@qq.com',
-                        phone: '166629816182',
-                        email: null
-                    }
-                };
-                chai.request(server)
-                    .put('/users/5bda48a9467b3521a4b4a3b5/addProfile')
-                    .send(user)
-                    .end(function (err, res) {
-                        expect(res).to.have.status(200);
-                        //let user = res.body.data ;
-                        expect(res.body).to.have.property('message', 'User Profile Successfully Updated!');
-                        //expect(res.body).to.have.property('message').equal('Expenditure Successfully Added!' );
-                        let profile = res.body.data.profile;
-                        expect(profile).to.include({gender: 'female', phone: '166629816182', email: null});
-                        done();
-                    });
-            });
-            after(function (done) {
-                chai.request(server)
-                    .get('/users/5bda48a9467b3521a4b4a3b5/profile')
-                    .end(function (err, res) {
-                        expect(res).to.have.status(200);
-                        expect(res.body).to.be.a('array');
-                        expect(res.body.length).to.equal(1);
-                        let result = _.map(res.body, (user) => {
-                            return {
-                                gender: user.profile.gender,
-                                phone: user.profile.phone,
-                                email: user.profile.email
-                            }
-                        });
-                        expect(result).to.include({gender: 'female', phone: '166629816182', email: null});
-                        //done();
-                    });
-                let user = {
-                    profile: {
-                        gender: 'female',
-                        //email: '1804094745@qq.com',
-                        phone: '13046529705',
-                        email: '1804094745@qq.com'
-                    }
-                };
-                chai.request(server)
-                    .put('/users/5bda48a9467b3521a4b4a3b5/addProfile')
-                    .send(user)
-                    .end(function (err, res) {
-                        done();
-                    });
-            });  // end-after
-        });
-        describe('when id is invalid', function () {
-            it('should return a 404 and a message for invalid user id', function (done) {
-                chai.request(server)
-                    .put('/users/1100001/addProfile')
-                    .end(function (err, res) {
-                        expect(res).to.have.status(404);
-                        expect(res.body).to.have.property('message', 'User NOT Found!');
-                        done();
-                    });
-            });
-        });
-    });
 
-
-
-
-
-    describe('DELETE /users/:username', () => {
+    describe('DELETE /users/:email', () => {
         it('should return a confirmation message and update database ', function(done) {
             chai.request(server)
-                .delete('/users/Amber')
+                .delete('/users/1804094747@qq.com')
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.have.property('message','User Successfully Deleted!' ) ;
@@ -138,12 +65,12 @@ describe('Users', function (){
                     expect(res).to.have.status(200);
                     expect(res.body).to.be.a('array');
                     let result = _.map(res.body, function(user) {
-                        return { username: user.username,
+                        return { email: user.email,
                             password: user.password };
                     }  );
                     //expect(result).to.have.lengthOf(1) ;
                     //expect(result).to.not.include( { paymenttype: 'Paypal', amount: 1600  } );
-                    expect(result).to.not.include( { username: 'Amber', password: '19293484857'  } );
+                    expect(result).to.not.include( { email: '1804094747@qq.com', password: '19293484857'  } );
                     done();
                 });
         });  // end after
@@ -160,16 +87,13 @@ describe('Users', function (){
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.be.a('array');
-                    expect(res.body.length).to.equal(5);
+                    expect(res.body.length).to.equal(2);
                     let result = _.map(res.body, (user) => {
-                        return { username: user.username,
+                        return { email: user.email,
                                   password: user.password }
                     });
-                    expect(result).to.include( { username: "gullveig", password: 'qwert1997'  } );
-                    expect(result).to.include( { username: "charlotte", password: 'qwert19970506' } );
-                    expect(result).to.include( { username: "April", password: 'does1997'  } );
-                    expect(result).to.include( { username: "diana", password: 'does19970506'  } );
-                    expect(result).to.include( { username: "Daniel", password: '19970506'  } );
+                    expect(result).to.include( { email: "1804094745@qq.com", password: 'qwert'  } );
+                    expect(result).to.include( { email: "1804094746@qq.com", password: '19970506' } );
                     //expect(result).to.include( { username: "Amber", password: '19293484857'  } );
                     //expect(result).to.include( { username: "zoe", password: 'zoe0914'  } );
                     done();
@@ -181,19 +105,19 @@ describe('Users', function (){
 
 
 
-    describe('GET /users/:username/info',  () => {
+    describe('GET /users/:email',  () => {
         it('should return a specific user matching the username in an array', function(done) {
             chai.request(server)
-                .get('/users/gullveig/info')
+                .get('/users/1804094745@qq.com')
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
                     expect(res.body).to.be.a('array');
                     expect(res.body.length).to.equal(1);
                     let result = _.map(res.body, (user) => {
-                        return { username: user.username,
-                                  gender: user.profile.gender, }
+                        return { email: user.email,
+                                  password: user.password, }
                     });
-                    expect(result).to.include( { username: "gullveig", gender: 'female'  } );
+                    expect(result).to.include( { email: "1804094745@qq.com", password: 'qwert'  } );
                     //expect(result).to.include( { username: "charlotte", password: 'szmmhfsbl1997' } );
                     //expect(result).to.include( { username: "April", password: 'does19970506'  } );
                     //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
@@ -202,10 +126,10 @@ describe('Users', function (){
         });
         it('should return a message for username that does not exist', function(done) {
             chai.request(server)
-                .get('/users/1100001/info')
+                .get('/users/1100001')
                 .end(function(err, res) {
                     expect(res).to.have.status(200);
-                    expect(res.body).to.have.property('Message','Sorry! Cannot find the user of this username!' ) ;
+                    expect(res.body).to.have.property('Message','Sorry! Cannot find this user !' ) ;
                     done();
                 });
         });
@@ -215,45 +139,7 @@ describe('Users', function (){
 
 
 
-
-    describe('GET /users/:id/profile',  () => {
-        it('should return profile info of a user in an array', function(done) {
-            chai.request(server)
-                .get('/users/5bda48a9467b3521a4b4a3b5/profile')
-                .end(function(err, res) {
-                    expect(res).to.have.status(200);
-                    expect(res.body).to.be.a('array');
-                    expect(res.body.length).to.equal(1);
-                    let result = _.map(res.body, (user) => {
-                        return { username:user.username,
-                                  gender: user.profile.gender,
-                                  email: user.profile.email }
-                    });
-                    expect(result).to.include( { username: 'gullveig', gender: 'female',email:'1804094745@qq.com'  } );
-                    //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
-                    //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
-                    //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
-                    done();
-                });
-
-        });
-        it('should return a 404 and a message for invalid user id', function(done) {
-            chai.request(server)
-                .get('/users/1100001/profile')
-                .end(function(err, res) {
-                    expect(res).to.have.status(404);
-                    expect(res.body).to.have.property('message','User NOT Found!' ) ;
-                    done();
-                });
-        });
-
-    });
-
-
-
-
-
-    describe('GET /users/specificex/:username',  () => {
+ /*   describe('GET /users/specificex/:username',  () => {
         it('should return all the expenditure records of one user in an array', function(done) {
             chai.request(server)
                 .get('/users/specificex/charlotte')
@@ -321,6 +207,6 @@ describe('Users', function (){
         });
 
     });
-
+*/
 
 });
