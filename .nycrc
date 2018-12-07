@@ -13,10 +13,10 @@
   ],
   "check-coverage": true,
   "per-file": false,
-  "lines": 50,
-  "statements": 55,
-  "functions": 30,
-  "branches": 20,
+  "lines": 40,
+  "statements": 40,
+  "functions": 10,
+  "branches": 5,
   "sourceMap": false,
   "instrument": false
 }
