@@ -9,6 +9,7 @@
     "test_income": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register test/routes/income-test.js",
     "test_users": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register test/routes/users-test.js",
     "coverage": "cross-env NODE_ENV=test PORT=4000 nyc mocha test/routes/expenditure-test.js",
+    "publish-coverage": "nyc report --reporter=text-lcov | coveralls",
     "build": "babel ./ --out-dir lib/ --ignore ./node_modules,./.babelrc,./package.json,./package-lock.json,./test --copy-files"
   },
   "dependencies": {
@@ -31,6 +32,7 @@
     "chai": "^3.5.0",
     "chai-http": "^2.0.1",
     "chai-things": "^0.2.0",
+    "coveralls": "^2.13.1",
     "cross-env": "^5.2.0",
     "lodash": "^4.17.4",
     "mocha": "^3.4.2",
