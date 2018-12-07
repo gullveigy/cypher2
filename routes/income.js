@@ -1,5 +1,6 @@
-let Income = require('../models/incomes');
-let express = require('express');
+import Income from '../models/incomes';
+import express from 'express';
+
 let router = express.Router();
 let mongoose = require('mongoose');
 

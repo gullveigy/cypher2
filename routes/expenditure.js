@@ -1,5 +1,6 @@
-let Expenditure = require('../models/expenditures');
-let express = require('express');
+import Expenditure from '../models/expenditures';
+import express from 'express';
+
 let router = express.Router();
 let mongoose = require('mongoose');
 

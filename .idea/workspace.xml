@@ -5,6 +5,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/expenditure.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/expenditure.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/income.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/income.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/routes/expenditure-test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/routes/expenditure-test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/routes/income-test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/routes/income-test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/routes/users-test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/routes/users-test.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -81,27 +87,30 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="babelrc" value="2" />
+          <entry key="js" value="1" />
           <entry key="json" value="2" />
           <entry key="yml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JSON" value="2" />
+          <entry key="JSON" value="4" />
+          <entry key="JavaScript" value="1" />
           <entry key="YAML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="1" />
-          <entry key="json" value="115" />
+          <entry key="js" value="80" />
+          <entry key="json" value="154" />
           <entry key="yml" value="49" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JSON" value="115" />
-          <entry key="JavaScript" value="1" />
+          <entry key="JSON" value="154" />
+          <entry key="JavaScript" value="80" />
           <entry key="YAML" value="49" />
         </counts>
       </usages-collector>
@@ -121,8 +130,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/users.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1653">
-              <caret line="87" column="32" selection-start-line="87" selection-start-column="32" selection-end-line="87" selection-end-column="62" />
+            <state relative-caret-position="95">
+              <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -130,17 +142,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/income.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3610">
-              <caret line="190" column="45" selection-start-line="190" selection-start-column="45" selection-end-line="190" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="741">
-              <caret line="39" column="24" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="24" />
+            <state>
+              <caret column="36" selection-start-column="36" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -148,8 +151,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/routes/expenditure-test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="115" selection-start-line="115" selection-end-line="115" />
+            <state relative-caret-position="-1140">
+              <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+                <element signature="e#123#146#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/expenditure.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="47" selection-start-column="47" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -166,24 +182,30 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="72" selection-start-line="7" selection-start-column="72" selection-end-line="7" selection-end-column="72" />
+            <state relative-caret-position="190">
+              <caret line="10" column="128" selection-start-line="10" selection-start-column="128" selection-end-line="10" selection-end-column="128" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package-lock.json">
+        <entry file="file://$PROJECT_DIR$/.babelrc">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1710" />
+            <state relative-caret-position="38">
+              <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+            </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/routes/income-test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4180">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="57">
+              <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+                <element signature="e#122#145#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -191,8 +213,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/routes/users-test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3971">
-              <caret line="209" column="2" selection-start-line="209" selection-start-column="2" selection-end-line="209" selection-end-column="2" />
+            <state relative-caret-position="57">
+              <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+                <element signature="e#122#145#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -216,15 +242,16 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/models/expenditures.js" />
         <option value="$PROJECT_DIR$/models/incomes.js" />
-        <option value="$PROJECT_DIR$/routes/expenditure.js" />
-        <option value="$PROJECT_DIR$/routes/users.js" />
         <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/routes/income.js" />
         <option value="$PROJECT_DIR$/models/users.js" />
-        <option value="$PROJECT_DIR$/test/routes/users-test.js" />
-        <option value="$PROJECT_DIR$/test/routes/expenditure-test.js" />
-        <option value="$PROJECT_DIR$/test/routes/income-test.js" />
         <option value="$PROJECT_DIR$/.travis.yml" />
+        <option value="$PROJECT_DIR$/.babelrc" />
+        <option value="$PROJECT_DIR$/test/routes/expenditure-test.js" />
+        <option value="$PROJECT_DIR$/routes/expenditure.js" />
+        <option value="$PROJECT_DIR$/test/routes/income-test.js" />
+        <option value="$PROJECT_DIR$/routes/income.js" />
+        <option value="$PROJECT_DIR$/test/routes/users-test.js" />
+        <option value="$PROJECT_DIR$/routes/users.js" />
         <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
@@ -245,9 +272,7 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-13" />
-    <option name="y" value="17" />
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="width" value="1346" />
     <option name="height" value="714" />
   </component>
@@ -1597,7 +1622,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81301000" />
+    <option name="totallyTimeSpent" value="82665000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1609,7 +1634,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-13" y="17" width="1346" height="714" extended-state="0" />
+    <frame x="0" y="0" width="1346" height="714" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16131498" />
@@ -1654,13 +1679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/expenditure.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="193" column="14" selection-start-line="193" selection-start-column="14" selection-end-line="193" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/incomes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -1675,38 +1693,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1653">
-          <caret line="87" column="32" selection-start-line="87" selection-start-column="32" selection-end-line="87" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/income.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3610">
-          <caret line="190" column="45" selection-start-line="190" selection-start-column="45" selection-end-line="190" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="741">
           <caret line="39" column="24" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/routes/users-test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3971">
-          <caret line="209" column="2" selection-start-line="209" selection-start-column="2" selection-end-line="209" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/routes/expenditure-test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="115" selection-start-line="115" selection-end-line="115" />
         </state>
       </provider>
     </entry>
@@ -1719,20 +1709,77 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package-lock.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1710" />
+        <state relative-caret-position="-1596" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.babelrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/expenditure.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="47" selection-start-column="47" selection-end-column="47" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/routes/income-test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4180">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="57">
+          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#122#145#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/income.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="36" selection-start-column="36" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/routes/users-test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#122#145#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/routes/expenditure-test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1140">
+          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#123#146#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="72" selection-start-line="7" selection-start-column="72" selection-end-line="7" selection-end-column="72" />
+        <state relative-caret-position="190">
+          <caret line="10" column="128" selection-start-line="10" selection-start-column="128" selection-end-line="10" selection-end-column="128" />
         </state>
       </provider>
     </entry>

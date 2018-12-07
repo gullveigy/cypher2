@@ -1,8 +1,9 @@
-var express = require('express');
-var router = express.Router();
-let User = require('../models/users');
-let Expenditure = require('../models/expenditures');
-let Income = require('../models/incomes');
+import User from '../models/users';
+import Expenditure from '../models/expenditures';
+import Income from '../models/incomes';
+import express from 'express';
+
+let router = express.Router();
 let mongoose = require('mongoose');
 
 var mongodbUri ='mongodb://userdb:userdb777@ds221271.mlab.com:21271/gullin';
