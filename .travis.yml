@@ -2,3 +2,10 @@ dist: trusty
 language: node_js
 node_js:
 - stable
+notifications:
+    email:
+        recipients:
+        - 1804094745@qq.com      # change to your own address
+        - 1666298161@qq.com    # uae other (optional)
+        on_success: never        # default: change
+        on_failure: always       # default: always

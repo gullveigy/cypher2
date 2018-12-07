@@ -33,7 +33,7 @@ describe('Incomes', function (){
 
 
 
-    
+
 
     describe('GET /:email/incomes',  () => {
         it('should return all the income records in an array', function(done) {
