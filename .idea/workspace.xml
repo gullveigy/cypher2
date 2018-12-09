@@ -95,13 +95,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="js" value="80" />
-          <entry key="json" value="156" />
+          <entry key="json" value="158" />
           <entry key="yml" value="49" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JSON" value="156" />
+          <entry key="JSON" value="158" />
           <entry key="JavaScript" value="80" />
           <entry key="YAML" value="49" />
         </counts>
@@ -134,8 +134,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.eslintrc.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+            <state relative-caret-position="190">
+              <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -1617,7 +1617,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82861000" />
+    <option name="totallyTimeSpent" value="83143000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1787,8 +1787,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.eslintrc.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+        <state relative-caret-position="190">
+          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
         </state>
       </provider>
     </entry>
