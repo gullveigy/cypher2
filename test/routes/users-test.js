@@ -1,6 +1,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http' ;
-import server from '../../bin/www';
+//import server from '../../bin/www';
+let server = null;
 let expect = chai.expect;
 import _ from 'lodash';
 import things from 'chai-things'
@@ -9,6 +10,15 @@ chai.use(chaiHttp);
 
 describe('Users', function (){
     // TODO
+    before(function(){
+        delete require.cache[require.resolve('../../bin/www')];
+        delete require.cache[require.resolve('../../models/users')];
+        server = require('../../bin/www');
+    });
+    after(function (done) {
+        server.close(done);
+    });
+
     describe('POST /users', function () {
         it('should return confirmation message and update database', function(done) {
             let user = {
