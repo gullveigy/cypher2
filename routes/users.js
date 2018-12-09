@@ -39,7 +39,7 @@ router.findAllusers = (req, res) => {                                           
 
         res.send(JSON.stringify(users,null,5));
     });
-}
+};
 
 
 
@@ -75,7 +75,7 @@ router.addUser = (req, res) => {                                                
 
             res.json({ message: 'User Successfully Added!', data: user });
     });
-}
+};
 
 
 
@@ -83,7 +83,7 @@ router.findOnebyEmail = (req, res) => {                                         
 
     res.setHeader('Content-Type', 'application/json');
 
-    User.find({ "email" : req.params.email },function(err, user) {
+    User.find({ 'email' : req.params.email },function(err, user) {
         if (user.length <= 0) {
             //res.status(404);
             res.json({Message: 'Sorry! Cannot find this user !'});
@@ -91,7 +91,7 @@ router.findOnebyEmail = (req, res) => {                                         
             res.send(JSON.stringify(user, null, 5));
 
     });
-}
+};
 
 
 
@@ -100,14 +100,14 @@ router.findOnebyEmail = (req, res) => {                                         
 
 router.deleteUserByEmail = (req, res) => {                                                                      //delete record             delete
 
-    User.remove({ "email" : req.params.email }, function(err) {
+    User.remove({ 'email' : req.params.email }, function(err) {
         if (err) {
             res.status(404);
             res.json({message: 'User NOT DELETED!', errmsg: err});
         }else
             res.json({ message: 'User Successfully Deleted!'});
     });
-}
+};
 
 
 
@@ -142,7 +142,7 @@ router.findallexpenditures = (req, res) => {                                    
     // Return a JSON representation of our list
     res.setHeader('Content-Type', 'application/json');
 
-    Expenditure.find({ "email" : req.params.email },function(err, expenditures) {
+    Expenditure.find({ 'email' : req.params.email },function(err, expenditures) {
         if (expenditures.length <= 0)
             res.json({Message: 'You have no expenditures!'});
         else if(err){
@@ -152,13 +152,13 @@ router.findallexpenditures = (req, res) => {                                    
         }else
             res.send(JSON.stringify(expenditures,null,5));
     });
-}
+};
 
 router.findallincomes = (req, res) => {                                                          //if login sucessfully                 get
     // Return a JSON representation of our list
     res.setHeader('Content-Type', 'application/json');
 
-    Income.find({ "email" : req.params.email },function(err, incomes) {
+    Income.find({ 'email' : req.params.email },function(err, incomes) {
         if (incomes.length <= 0)
             res.json({Message: 'You have no incomes!'});
         else if(err){
@@ -168,7 +168,7 @@ router.findallincomes = (req, res) => {                                         
         }else
             res.send(JSON.stringify(incomes,null,5));
     });
-}
+};
 
 
 

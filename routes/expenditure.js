@@ -32,20 +32,20 @@ router.findAll = (req, res) => {                                                
 
         res.send(expenditures,null,5);
     });
-}
+};
 
 
 router.findUserAll = (req, res) => {                                                                               //findall                 get
     // Return a JSON representation of our list
     res.setHeader('Content-Type', 'application/json');
 
-    Expenditure.find({"email": req.params.email},function(err, expenditures) {
+    Expenditure.find({'email': req.params.email},function(err, expenditures) {
         if (err)
             res.send(err);
 
         res.send(expenditures,null,5);
     });
-}
+};
 //router.deleteAll = (req, res) => {
 // Return a JSON representation of our list
 //res.setHeader('Content-Type', 'application/json');
@@ -66,7 +66,7 @@ router.findOne = (req, res) => {                                                
 
     res.setHeader('Content-Type', 'application/json');
 
-    Expenditure.find({ "_id" : req.params.id },function(err, expenditure) {
+    Expenditure.find({ '_id' : req.params.id },function(err, expenditure) {
         if (err) {
             res.status(404);
             res.json({Message: 'Sorry! Cannot find the expenditure of this id!',errmsg:err});
@@ -74,7 +74,7 @@ router.findOne = (req, res) => {                                                
             res.send(JSON.stringify(expenditure, null, 5));
 
     });
-}
+};
 
 function getByValue(array, id) {
     var result  = array.filter(function(obj){return obj.id == id;} );
@@ -90,7 +90,7 @@ function getTotalAmounts(array) {
 function compare(str) {                                    //升序排列
     return function(obj1, obj2) {
         var value1 = obj1[str];
-        var value2 = obj2[str]
+        var value2 = obj2[str];
         if (value2 < value1) {
             return 1;
         } else if (value2 > value1) {
@@ -98,7 +98,7 @@ function compare(str) {                                    //升序排列
         } else {
             return 0;
         }
-    }
+    };
 }
 
 
@@ -122,7 +122,7 @@ router.addExpenditure = (req, res) => {                                         
 
             res.json({ message: 'Expenditure Successfully Added!', data: expenditure });
     });
-}
+};
 
 
 
@@ -135,27 +135,27 @@ router.deleteExpenditure = (req, res) => {                                      
         }else
             res.json({ message: 'Expenditure Successfully Deleted!'});
     });
-}
+};
 
 
 
 router.findUserTotalAmounts = (req, res) => {                                                                    //寻找支出总额               get
 
-    Expenditure.find({"email": req.params.email},function(err, expenditures) {//在出现的支出列表下面添加按钮找到支出总额，如果根本没有支出列表，那么就不会调用这个方法
+    Expenditure.find({'email': req.params.email},function(err, expenditures) {//在出现的支出列表下面添加按钮找到支出总额，如果根本没有支出列表，那么就不会调用这个方法
         if (err)
             res.send(err);
         //res.json({ totalamounts : 0 });
         else
             res.json([{ totalamounts : getTotalAmounts(expenditures) }]);
     });
-}
+};
 
 
 
 router.findUserMonthAmount = (req,res) => {                                                                     //寻找每月支出额             get
     res.setHeader('Content-Type', 'application/json');
     //var keyword = {'date': {$regex:req.params.date, $options:'i'}};
-    Expenditure.find({"email":req.params.email,"date":{$regex:req.params.date, $options:'i'}}, function(err, expenditures) {
+    Expenditure.find({'email':req.params.email,'date':{$regex:req.params.date, $options:'i'}}, function(err, expenditures) {
         if (expenditures.length <= 0)
             res.json({Message: 'Sorry! Cannot find the expenditures of this month!'});
         //res.send(err);
@@ -163,7 +163,7 @@ router.findUserMonthAmount = (req,res) => {                                     
             res.json([{ monthlyamounts : getTotalAmounts(expenditures) }]);
     });
 
-}
+};
 
 
 
@@ -187,7 +187,7 @@ router.changeExpenditureinfo = (req, res) => {                                  
             });
         }
     });
-}
+};
 
 
 
@@ -195,13 +195,13 @@ router.changeExpenditureinfo = (req, res) => {                                  
 router.findUserExByMessage = (req, res) => {                                                            //通过的description查找记录，fuzzysearch    get
     res.setHeader('Content-Type', 'application/json');
     //var keyword = {'description': {$regex:req.params.description, $options:'i'}};
-    Expenditure.find({"email": req.params.email,'message':{$regex:req.params.message, $options:'i'}}, function(err,expenditure) {
+    Expenditure.find({'email': req.params.email,'message':{$regex:req.params.message, $options:'i'}}, function(err,expenditure) {
         if (expenditure.length <= 0)
             res.json({Message: 'Sorry! Cannot find this expenditure by this message!'});
         else
             res.send(JSON.stringify(expenditure,null,5));
     });
-}
+};
 
 
 

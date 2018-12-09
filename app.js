@@ -8,9 +8,9 @@ var cors = require('cors');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-const users = require("./routes/users");
-const expenditure = require("./routes/expenditure");
-const income = require("./routes/income");
+const users = require('./routes/users');
+const expenditure = require('./routes/expenditure');
+const income = require('./routes/income');
 
 var app = express();
 

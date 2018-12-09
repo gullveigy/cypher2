@@ -4,7 +4,7 @@ import chaiHttp from 'chai-http' ;
 let server = null;
 let expect = chai.expect;
 import _ from 'lodash';
-import things from 'chai-things'
+import things from 'chai-things';
 chai.use( things);
 chai.use(chaiHttp);
 
@@ -28,7 +28,7 @@ describe('Incomes', function (){
                     expect(res.body.length).to.equal(4);
                     let result = _.map(res.body, (income) => {
                         return { message: income.message,
-                                  amount: income.amount }
+                            amount: income.amount };
                     });
                     expect(result).to.include( { message: 'from Day', amount: 135  });
                     expect(result).to.include( { message: 'Parttime Coffee', amount: 24  } );
@@ -55,7 +55,7 @@ describe('Incomes', function (){
                     expect(res.body.length).to.equal(2);
                     let result = _.map(res.body, (income) => {
                         return { message: income.message,
-                            amount: income.amount }
+                            amount: income.amount };
                     });
                     expect(result).to.include( { message: 'from Day', amount: 135  });
                     expect(result).to.include( { message: 'Parttime Coffee', amount: 24  } );
@@ -78,9 +78,9 @@ describe('Incomes', function (){
                     expect(res.body.length).to.equal(1);
                     let result = _.map(res.body, (income) => {
                         return { message: income.message,
-                            amount: income.amount }
+                            amount: income.amount };
                     });
-                    expect(result).to.include( { message: "from Day", amount: 135  } );
+                    expect(result).to.include( { message: 'from Day', amount: 135  } );
                     //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
                     //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
                     //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
@@ -113,7 +113,7 @@ describe('Incomes', function (){
                     expect(res.body.length).to.equal(1);
                     let result = _.map(res.body, (income) => {
                         return { message: income.message,
-                            amount: income.amount }
+                            amount: income.amount };
                     });
                     expect(result).to.include(
                         { message: 'from Day', amount: 135 }
@@ -274,7 +274,7 @@ describe('Incomes', function (){
                     .end(function(err, res) {
                         let result = _.map(res.body, (income) => {
                             return { message: income.message,
-                                      amount: income.amount };
+                                amount: income.amount };
                         }  );
                         expect(result).to.include( { message: 'from Day', amount: 130  } );
                         //done();

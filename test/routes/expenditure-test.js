@@ -4,7 +4,7 @@ import chaiHttp from 'chai-http' ;
 let server = null;
 let expect = chai.expect;
 import _ from 'lodash';
-import things from 'chai-things'
+import things from 'chai-things';
 chai.use( things);
 chai.use(chaiHttp);
 
@@ -18,7 +18,7 @@ describe('Expenditures', function (){
     after(function (done) {
         server.close(done);
     });
-     describe('POST /expenditures', function () {
+    describe('POST /expenditures', function () {
         it('should return confirmation message and update database', function(done) {
             let expenditure = {
                 email: '1804094745@qq.com',
@@ -71,7 +71,7 @@ describe('Expenditures', function (){
                     date: '2018-10-01',
                     payment: 'we chat',
                     amount: 2.95,
-                    type: "repast"
+                    type: 'repast'
                 };
                 chai.request(server)
                     .put('/expenditures/5c06a9d7bc2a6545387ddba2/changeExinfo')
@@ -206,7 +206,7 @@ describe('Expenditures', function (){
                     expect(res.body.length).to.equal(4);
                     let result = _.map(res.body, (expenditure) => {
                         return { message: expenditure.message,
-                                  amount: expenditure.amount }
+                            amount: expenditure.amount };
                     });
                     expect(result).to.include( { message: 'cup', amount: 2.95  });
                     expect(result).to.include( { message: 'JJ.Bus', amount: 3  } );
@@ -231,7 +231,7 @@ describe('Expenditures', function (){
                     expect(res.body.length).to.equal(2);
                     let result = _.map(res.body, (expenditure) => {
                         return { message: expenditure.message,
-                            amount: expenditure.amount }
+                            amount: expenditure.amount };
                     });
                     expect(result).to.include( { message: 'cup', amount: 2.95  });
                     expect(result).to.include( { message: 'JJ.Bus', amount: 3  } );
@@ -256,9 +256,9 @@ describe('Expenditures', function (){
                     expect(res.body.length).to.equal(1);
                     let result = _.map(res.body, (expenditure) => {
                         return { message: expenditure.message,
-                                  amount: expenditure.amount }
+                            amount: expenditure.amount };
                     });
-                    expect(result).to.include( { message: "cup", amount: 2.95  } );
+                    expect(result).to.include( { message: 'cup', amount: 2.95  } );
                     //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
                     //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );
                     //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
@@ -293,10 +293,10 @@ describe('Expenditures', function (){
                     expect(res.body.length).to.equal(1);
                     let result = _.map(res.body, (expenditure) => {
                         return { message: expenditure.message,
-                                  amount: expenditure.amount }
+                            amount: expenditure.amount };
                     });
                     expect(result).to.include(
-                                               { message: 'cup', amount: 2.95 }
+                        { message: 'cup', amount: 2.95 }
                     );
                     //expect(result).to.include( { description: "Acide Hyaluronique", amount: 6.95  } );
                     //expect(result).to.include( { description: "Facteurs Naturels", amount: 5.95  } );

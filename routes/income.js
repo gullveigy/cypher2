@@ -31,20 +31,20 @@ router.findAll = (req, res) => {                                                
 
         res.send(JSON.stringify(incomes,null,5));
     });
-}
+};
 
 
 router.findUserAll = (req, res) => {                                                                               //findall                 get
     // Return a JSON representation of our list
     res.setHeader('Content-Type', 'application/json');
 
-    Income.find({"email":req.params.email},function(err, incomes) {
+    Income.find({'email':req.params.email},function(err, incomes) {
         if (err)
             res.send(err);
 
         res.send(JSON.stringify(incomes,null,5));
     });
-}
+};
 
 
 
@@ -53,14 +53,14 @@ router.findOne = (req, res) => {                                                
 
     res.setHeader('Content-Type', 'application/json');
 
-    Income.find({ "_id" : req.params.id },function(err, income) {
+    Income.find({ '_id' : req.params.id },function(err, income) {
         if (err) {
             res.status(404);
             res.json({Message: 'Sorry! Cannot find the income of this id!'});
         }else
             res.send(JSON.stringify(income,null,5));
     });
-}
+};
 
 
 
@@ -80,7 +80,7 @@ function getTotalAmounts(array) {
 function compare(str) {                                    //升序排列
     return function(obj1, obj2) {
         var value1 = obj1[str];
-        var value2 = obj2[str]
+        var value2 = obj2[str];
         if (value2 < value1) {
             return 1;
         } else if (value2 > value1) {
@@ -88,7 +88,7 @@ function compare(str) {                                    //升序排列
         } else {
             return 0;
         }
-    }
+    };
 }
 
 
@@ -128,7 +128,7 @@ router.addIncome = (req, res) => {                                              
 
             res.json({ message: 'Income Successfully Added!', data: income });
     });
-}
+};
 
 
 
@@ -142,20 +142,20 @@ router.deleteIncome = (req, res) => {                                           
         }else
             res.json({ message: 'Income Successfully Deleted!'});
     });
-}
+};
 
 
 
 router.findUserTotalAmounts = (req, res) => {                                                                    //寻找支出总额               get
 
-    Income.find({"email":req.params.email},function(err, incomes) {//在出现的支出列表下面添加按钮找到支出总额，如果根本没有支出列表，那么就不会调用这个方法
+    Income.find({'email':req.params.email},function(err, incomes) {//在出现的支出列表下面添加按钮找到支出总额，如果根本没有支出列表，那么就不会调用这个方法
         if (err)
             res.send(err);
         //res.json({ totalamounts : 0 });
         else
             res.json([{ totalamounts : getTotalAmounts(incomes) }]);
     });
-}
+};
 
 
 
@@ -179,7 +179,7 @@ router.changeIncomeinfo = (req, res) => {                                       
             });
         }
     });
-}
+};
 
 
 
@@ -189,20 +189,20 @@ router.changeIncomeinfo = (req, res) => {                                       
 router.findUserInByMessage = (req, res) => {                                                            //通过的description查找记录，fuzzysearch    get
     res.setHeader('Content-Type', 'application/json');
     //var keyword = {'description': {$regex:req.params.description, $options:'i'}};
-    Income.find({"email":req.params.email,"message":{$regex:req.params.message, $options:'i'}}, function(err,income) {
+    Income.find({'email':req.params.email,'message':{$regex:req.params.message, $options:'i'}}, function(err,income) {
         if (income.length <= 0)
             res.json({Message: 'Sorry! Cannot find income by this message!'});
         else
             res.send(JSON.stringify(income,null,5));
     });
-}
+};
 
 
 
 router.findUserMonthIncome = (req,res) => {                                                                     //寻找每月支出额             get
     res.setHeader('Content-Type', 'application/json');
     //var keyword = {'date': {$regex:req.params.date, $options:'i'}};
-    Income.find({"email":req.params.email,"date":{$regex:req.params.date, $options:'i'}}, function(err, incomes) {
+    Income.find({'email':req.params.email,'date':{$regex:req.params.date, $options:'i'}}, function(err, incomes) {
         if (incomes.length <= 0)
             res.json({Message: 'Sorry! Cannot find the incomes of this month!'});
         //res.send(err);
@@ -210,7 +210,7 @@ router.findUserMonthIncome = (req,res) => {                                     
             res.json([{ monthamounts : getTotalAmounts(incomes) }]);
     });
 
-}
+};
 
 
 //router.findMonthlyBalance = (req,res) => {

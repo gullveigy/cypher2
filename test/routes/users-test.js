@@ -4,7 +4,7 @@ import chaiHttp from 'chai-http' ;
 let server = null;
 let expect = chai.expect;
 import _ from 'lodash';
-import things from 'chai-things'
+import things from 'chai-things';
 chai.use( things);
 chai.use(chaiHttp);
 
@@ -101,10 +101,10 @@ describe('Users', function (){
                     expect(res.body.length).to.equal(2);
                     let result = _.map(res.body, (user) => {
                         return { email: user.email,
-                                  password: user.password }
+                            password: user.password };
                     });
-                    expect(result).to.include( { email: "1804094745@qq.com", password: 'qwert'  } );
-                    expect(result).to.include( { email: "1804094746@qq.com", password: '19970506' } );
+                    expect(result).to.include( { email: '1804094745@qq.com', password: 'qwert'  } );
+                    expect(result).to.include( { email: '1804094746@qq.com', password: '19970506' } );
                     //expect(result).to.include( { username: "Amber", password: '19293484857'  } );
                     //expect(result).to.include( { username: "zoe", password: 'zoe0914'  } );
                     done();
@@ -126,9 +126,9 @@ describe('Users', function (){
                     expect(res.body.length).to.equal(1);
                     let result = _.map(res.body, (user) => {
                         return { email: user.email,
-                                  password: user.password, }
+                            password: user.password, };
                     });
-                    expect(result).to.include( { email: "1804094745@qq.com", password: 'qwert'  } );
+                    expect(result).to.include( { email: '1804094745@qq.com', password: 'qwert'  } );
                     //expect(result).to.include( { username: "charlotte", password: 'szmmhfsbl1997' } );
                     //expect(result).to.include( { username: "April", password: 'does19970506'  } );
                     //expect(result).to.include( { description: "lancome foundation", amount: 36  } );
